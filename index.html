@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnamen Mobile Legends - Warkop Iyah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF5722;
+            --secondary: #3A7BD5;
+            --dark: #333;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #E64A19);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.ibb.co/0jQ6XJx/mlbb-bg.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            color: #FFEB3B;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            position: relative;
+            background-color: rgba(0,0,0,0.7);
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .prize-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .prize-card {
+            flex: 1 1 300px;
+            max-width: 350px;
+            background: linear-gradient(135deg, var(--secondary), #00D2FF);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .prize-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .prize-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            transition: all 0.5s;
+        }
+        
+        .prize-card:hover::before {
+            transform: rotate(180deg);
+        }
+        
+        .prize-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .prize-card .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .prize-card .bonus {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .prize-card.second {
+            background: linear-gradient(135deg, #606C88, #3F4C6B);
+        }
+        
+        .prize-card.third {
+            background: linear-gradient(135deg, #C471F5, #FA71CD);
+        }
+        
+        .register-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,87,34,0.4);
+            margin: 1rem auto;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .register-btn:hover {
+            background-color: #E64A19;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255,87,34,0.6);
+        }
+        
+        .register-btn i {
+            margin-left: 0.5rem;
+        }
+        
+        .rules {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 3rem 0;
+        }
+        
+        .rules h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .rules ul {
+            list-style-type: none;
+        }
+        
+        .rules li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .rules li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 3rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255,87,34,0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37,211,102,0.6);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .prize-card {
+                flex: 1 1 100%;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .register-btn {
+                width: 100%;
+                padding: 1rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 1.5rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TURNAMEN MOBILE LEGENDS</h1>
+        <h2>WARKOP IYAH</h2>
+        <p>Biaya Pendaftaran: Rp150.000/Tim</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">HADIAH MENARIK MENANTI ANDA!</h2>
+        
+        <div class="prize-section">
+            <div class="prize-card">
+                <h3>JUARA 1</h3>
+                <div class="price">Rp1.500.000</div>
+                <div class="bonus">+ Kaos Eksklusif</div>
+                <div class="bonus">+ Tiket Perlombaan di Jakarta</div>
+            </div>
+            
+            <div class="prize-card second">
+                <h3>JUARA 2</h3>
+                <div class="price">Rp750.000</div>
+                <div class="bonus">+ Kaos Eksklusif</div>
+            </div>
+            
+            <div class="prize-card third">
+                <h3>JUARA 3</h3>
+                <div class="price">Rp500.000</div>
+                <div class="bonus">+ Kaos Eksklusif</div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="#register" class="register-btn">DAFTAR SEKARANG <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="rules">
+            <h3>Persyaratan dan Ketentuan:</h3>
+            <ul>
+                <li>Turnamen akan diselenggaran pada 2 Juni - 7 Juni 2025</li>
+                <li>Turnamen terbuka untuk umum</li>
+                <li>HTM : Rp50.000 per tim</li>
+                <li>Pendaftaran Rp150.000 per tim (5 orang)</li>
+                <li>Setiap tim wajib hadir 30 menit sebelum pertandingan dimulai</li>
+                <li>Peserta membawa perangkat sendiri (HP/Tablet)</li>
+                <li>Koneksi internet disediakan panitia</li>
+                <li>Teknis pertandingan: (Best of 3), Final (Best of 7)</li>
+                <li>Hero dan skin disesuaikan dengan akun masing-masing</li>
+                <li>Dilarang menggunakan cheat, hack, atau software ilegal</li>
+                <li>Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat</li>
+            </ul>
+        </div>
+
+        <div id="register" class="form-container">
+            <h3 class="section-title">FORMULIR PENDAFTARAN</h3>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="team-name">Nama Tim*</label>
+                    <input type="text" id="team-name" class="form-control" required placeholder="Contoh: Team Elite">
+                </div>
+                
+                <div class="form-group">
+                    <label for="leader-name">Nama Ketua Tim*</label>
+                    <input type="text" id="leader-name" class="form-control" required placeholder="Nama lengkap ketua tim">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor WhatsApp*</label>
+                    <input type="tel" id="phone" class="form-control" required placeholder="Contoh: 081234567890">
+                </div>
+                
+                <div class="form-group">
+                    <label for="members">Nama Anggota Tim (5 orang utama)*</label>
+                    <textarea id="members" class="form-control" required placeholder="Tulis nama lengkap semua anggota, dipisahkan dengan koma. Contoh: Andi Wijaya, Budi Santoso, Citra Dewi, Dedi Prabowo, Eka Putri, Fajar Nugraha (cadangan)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="payment">Metode Pembayaran*</label>
+                    <select id="payment" class="form-control" required>
+                        <option value="" disabled selected>Pilih metode pembayaran</option>
+                        <option value="DANA">DANA (08388548795)</option>
+                        <option value="Cash">CASH</option>
+                    </select>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="submit" class="register-btn">KIRIM PENDAFTARAN <i class="fab fa-whatsapp"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <h3>WARKOP IYAH</h3>
+        <p>Jl. Raya Sadang - Subang, Purwakarta</p>
+        <p>Contact: 0813-7050-4313 (Panitia Turnamen)</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <p>&copy; 2025 Warkop Iyah. All Rights Reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/6281370504313?text=Halo%20panitia%20turnamen%20ML%20Warkop%20Iyah,%20saya%20ingin%20bertanya..." class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const teamName = document.getElementById('team-name').value;
+            const leaderName = document.getElementById('leader-name').value;
+            const phone = document.getElementById('phone').value;
+            const members = document.getElementById('members').value;
+            const payment = document.getElementById('payment').value;
+            
+            const message = `*PENDAFTARAN TURNAMEN ML WARKOP IYAH*%0A%0A
+*Nama Tim:* ${teamName}%0A
+*Ketua Tim:* ${leaderName}%0A
+*Nomor WhatsApp:* ${phone}%0A
+*Anggota Tim:* ${members}%0A
+*Metode Pembayaran:* ${payment}%0A%0A
+*Konfirmasi Pembayaran:*%0A
+Silakan lakukan pembayaran Rp150.000 sesuai metode yang dipilih dan kirim bukti transfer melalui WhatsApp ini.%0A%0A
+Terima kasih telah mendaftar!`;
+            
+            window.open(`https://wa.me/6281370504313?text=${message}`, '_blank');
+            
+            this.reset();
+            
+            alert('Formulir berhasil diisi! Anda akan diarahkan ke WhatsApp untuk mengirim data pendaftaran.');
+        });
+        
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>
