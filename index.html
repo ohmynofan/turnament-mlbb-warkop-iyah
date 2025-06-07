@@ -642,8 +642,8 @@
             
             <p><strong>Detail Turnamen:</strong></p>
             <ul class="rules-list">
-                <li><i class="fas fa-calendar-alt"></i> <strong>Tanggal:</strong>  14 Juni 2025 - Selesai</li>
-                <i class="fas fa-microphone"></i> <strong>Pendaftaran:</strong> 7 Juni - 13 Juni 2025</li>
+                <li><i class="fas fa-calendar-alt"></i> <strong>Tanggal:</strong>  10 Juni 2025 - Selesai</li>
+                <i class="fas fa-microphone"></i> <strong>Technical Meeting:</strong> 7 Juni 2025</li>
                 <li><i class="fas fa-map-marker-alt"></i> <strong>Tempat:</strong> WARKOP IYAH, CIBATU</li>
                 <li><i class="fas fa-users"></i> <strong>Format:</strong> 5v5 (Single Elimination)</li>
                 <li><i class="fas fa-money-bill-wave"></i> <strong>Biaya Pendaftaran:</strong> Rp 100.000 per tim</li>
@@ -682,7 +682,7 @@
             <ul class="rules-list">
                 <li><i class="fas fa-check-circle"></i> Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</li>
                 <li><i class="fas fa-check-circle"></i> Panitia berhak mendiskualifikasi tim yang melanggar peraturan.</li>
-                <li><i class="fas fa-check-circle"></i> Turnamen akan disiarkan langsung di WARKOP IYAH.</li>
+                <li><i class="fas fa-check-circle"></i> Turnamen akan disiarkan langsung di WARKOP IYAH (Semifinal & Final)</li>
             </ul>
         </section>
         
@@ -692,7 +692,7 @@
                 <h2>Hadiah Turnamen</h2>
             </div>
             
-            <p>Total hadiah turnamen senilai <strong>Rp 3.000.000</strong> dengan rincian sebagai berikut:</p>
+            <p>Total hadiah turnamen senilai <strong>Rp 3.500.000</strong> dengan rincian sebagai berikut:</p>
             
             <div class="prize-card">
                 <div class="prize-icon">
@@ -753,7 +753,12 @@
                 
                 <div class="form-group">
                     <label for="team-members">Anggota Tim</label>
-                    <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung 3. Romeny 4. Ronggur 5. Sungkem)" required></textarea>
+                    <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim:
+1. Budi
+2. Dudung
+3. Sungkem
+4. Ronggur
+5. Stang Mio" required></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -796,7 +801,7 @@
     
     <script>
         function updateCountdown() {
-            const endDate = new Date("Juni 14, 2025 09:00:00").getTime();
+            const endDate = new Date("Juni 10, 2025 09:00:00").getTime();
             const now = new Date().getTime();
             const distance = endDate - now;
             
@@ -901,7 +906,10 @@
                                    `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
                                    `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
                                    `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
-                                   `_Pendaftaran ini dikirim melalui website WARKOP IYAH_`;
+                                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_`; + 
+                                   `*Konfirmasi Pembayaran:*; +
+                                   `Silahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung`; + 
+                                   `Terima Kasih telah mendaftar!`;
             
             window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
             
