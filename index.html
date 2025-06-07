@@ -901,15 +901,14 @@
             }
             
             const whatsappMessage = `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
-                                   `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
-                                   `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
-                                   `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
-                                   `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                                   `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
-                                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_`; + 
-                                   `*Konfirmasi Pembayaran:* +
-                                   `Silahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025` + 
-                                   `Terima Kasih telah mendaftar!`;
+                       `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
+                       `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
+                       `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
+                       `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
+                       `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
+                       `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A` +
+                       `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
+                       `Terima Kasih telah mendaftar!`;
             
             window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
             
