@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id-ID">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -349,8 +349,10 @@
         
         .form-buttons .btn {
             margin-top: 0;
-            flex: 1;
-            min-width: 120px;
+            flex: 1 1 100%;
+            min-width: 0;
+            padding: 0.8rem;
+            font-size: 0.9rem;
         }
         
         .payment-methods {
@@ -457,7 +459,7 @@
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
-
+    
         @media (min-width: 576px) {
             .logo {
                 flex-direction: row;
@@ -476,6 +478,12 @@
             
             .countdown-item {
                 min-width: 80px;
+            }
+
+            .form-buttons .btn {
+                flex: 1;
+                min-width: 120px;
+                font-size: 0.95rem;
             }
         }
         
@@ -677,7 +685,7 @@
                 <li><i class="fas fa-check-circle"></i> Turnamen akan disiarkan langsung di YouTube Warkop IYAH.</li>
             </ul>
         </section>
-
+        
         <section id="prize" class="section fade-in delay-3">
             <div class="section-title">
                 <i class="fas fa-trophy"></i>
@@ -702,7 +710,7 @@
                 </div>
                 <div class="prize-content">
                     <h3>Juara 2</h3>
-                    <p>Rp 750.000 + Sertifikat</p>
+                    <p>Rp 1.000.000 + Sertifikat</p>
                 </div>
             </div>
             
@@ -712,7 +720,7 @@
                 </div>
                 <div class="prize-content">
                     <h3>Juara 3</h3>
-                    <p>Rp 500.000 + Sertifikat</p>
+                    <p>Rp 750.000 + Sertifikat</p>
                 </div>
             </div>
             
@@ -745,7 +753,7 @@
                 
                 <div class="form-group">
                     <label for="team-members">Anggota Tim</label>
-                    <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung 3. Ronggur 4. Yanto 5. Sungkem)" required></textarea>
+                    <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung)" required></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -830,7 +838,7 @@
                         link.classList.remove('active');
                     });
                     this.classList.add('active');
-
+                    
                     history.pushState(null, null, targetId);
                 }
             });
@@ -871,28 +879,33 @@
                 notification.classList.remove('show');
             }, duration);
         }
-        
+
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const teamName = document.getElementById('team-name').value;
             const teamLeader = document.getElementById('team-leader').value;
-            const teamLeaderId = document.getElementById('team-leader-id').value;
             const teamContact = document.getElementById('team-contact').value;
             const teamMembers = document.getElementById('team-members').value;
             const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
             
-            const whatsappMessage = `* FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
-                                   `*Nama Tim:* ${teamName}%0A` +
-                                   `*Leader Tim:* ${teamLeader}%0A` +
-                                   `*Nomor WhatsApp:* ${teamContact}%0A` +
-                                   `*Metode Pembayaran:* ${paymentMethod}%0A%0A` +
-                                   `*Anggota Tim:*%0A${teamMembers.replace(/\n/g, '%0A')}%0A%0A` +
+            const whatsappRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+            if (!whatsappRegex.test(teamContact)) {
+                showNotification('Nomor WhatsApp tidak valid! Harap masukkan nomor yang benar.');
+                return;
+            }
+            
+            const whatsappMessage = `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
+                                   `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
+                                   `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
+                                   `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
+                                   `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
+                                   `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
                                    `_Pendaftaran ini dikirim melalui website Warkop IYAH_`;
             
-            window.open(`https://wa.me/6281370504313?text=${whatsappMessage}`, '_blank');
+            window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
             
-            showNotification('Formulir berhasil diisi! Anda akan diarahkan ke WhatsApp.');
+            showNotification('Formulir berhasil diisi! Anda akan diarahkan ke WhatsApp panitia.');
             
             this.reset();
         });
