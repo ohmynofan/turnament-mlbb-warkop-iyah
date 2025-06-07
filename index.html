@@ -901,7 +901,13 @@
                                    `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
                                    `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
                                    `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
-                                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_`;
+                                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_`; +
+                                   `*Konfirmasi Pembayaran:*;` +
+                                   `Silakan lakukan pembayaran Rp100.000 sesuai metode yang dipilih dan kirim bukti transfer melalui WhatsApp ini.`;
+
+_*Pendaftaran hanya valid setelah pembayaran dikonfirmasi oleh panitia_
+
+Terima kasih telah mendaftar!
             
             window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
             
