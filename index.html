@@ -3,692 +3,604 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TURNAMENT MLBB - WARKOP IYAH 2025</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Form Pendaftaran Turnamen MLBB - WARKOP IYAH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #FF5722;
-            --primary-dark: #E64A19;
-            --secondary: #3A7BD5;
-            --secondary-light: #00D2FF;
-            --dark: #222;
-            --darker: #111;
-            --light: #f8f9fa;
-            --silver: #606C88;
-            --purple: #C471F5;
-            --pink: #FA71CD;
-            --whatsapp: #25D366;
-            --gold: #FFD700;
+            --secondary: #607D8B;
+            --dark: #263238;
+            --light: #ECEFF1;
+            --accent: #FFC107;
         }
         
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--darker);
-            background-image: url('https://i.ibb.co/3WJQ2bT/mlbb-bg-dark.jpg');
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1471&auto=format&fit=crop');
+            background-size: cover;
             background-attachment: fixed;
-            background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
-            -webkit-tap-highlight-color: transparent;
+            line-height: 1.6;
         }
         
-        header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
-                        url('https://i.ibb.co/5KJ0b8Q/mlbb-header-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 5rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(255,87,34,0.3);
-            position: relative;
-            overflow: hidden;
-            border-bottom: 5px solid var(--primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://i.ibb.co/8XJQZzT/mlbb-heroes-bg.png') center/cover;
-            opacity: 0.2;
-            z-index: 0;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 15px;
-            border: 2px solid rgba(255,87,34,0.3);
-            backdrop-filter: blur(5px);
-        }
-        
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #FF5722, #FFC107);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(255,87,34,0.8);
-            }
-            to {
-                text-shadow: 0 0 20px rgba(255,87,34,1), 0 0 30px rgba(255,199,7,0.6);
-            }
-        }
-        
-        header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            color: var(--gold);
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-            font-weight: 600;
-        }
-        
-        .register-btn-header {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(255,87,34,0.5);
-            margin: 1.5rem auto;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-        
-        .register-btn-header::before {
-            content: "";
-            position: absolute;
+        body::before {
+            content: '';
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: -1;
-            transition: opacity 0.3s;
         }
         
-        .register-btn-header:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(255,87,34,0.7);
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        .register-btn-header:hover::before {
-            opacity: 1;
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
         
-        .register-btn-header i {
-            margin-left: 0.8rem;
-            transition: transform 0.3s;
+        .logo img {
+            height: 200px;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
         }
         
-        .register-btn-header:hover i {
-            transform: translateX(5px);
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem;
+            border-radius: 8px;
+            max-width: 100%;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        nav a i {
+            margin-right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
         }
         
         .container {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section {
+            background-color: rgba(38, 50, 56, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
         }
         
         .section-title {
-            text-align: center;
-            margin: 3rem 0;
-            font-size: 2.2rem;
-            color: white;
-            position: relative;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
         
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            margin: 1rem auto;
-            border-radius: 2px;
+        .section-title i {
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
         }
         
-        .prize-section {
+        .section-title h2 {
+            font-size: 1.5rem;
+        }
+        
+        .countdown {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2rem;
-            margin: 4rem 0;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background-color: rgba(255, 87, 34, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 70px;
+            border: 1px solid var(--primary);
+            flex: 1;
+        }
+        
+        .countdown-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
         }
         
         .prize-card {
-            flex: 1 1 300px;
-            max-width: 350px;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: white;
-            padding: 2.5rem 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: 2px solid rgba(255,255,255,0.1);
-        }
-        
-        .prize-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-        
-        .prize-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-            transition: all 0.8s;
-        }
-        
-        .prize-card:hover::before {
-            transform: rotate(360deg);
-        }
-        
-        .prize-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .prize-card h3::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: white;
-            border-radius: 3px;
-        }
-        
-        .prize-card .price {
-            font-size: 2.2rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-            color: #FFEB3B;
-        }
-        
-        .prize-card .bonus {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .prize-card .bonus::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #4CAF50;
-        }
-        
-        .prize-card.second {
-            background: linear-gradient(135deg, var(--silver), #3F4C6B);
-        }
-        
-        .prize-card.third {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-        }
-        
-        .register-btn {
-            display: inline-block;
-            padding: 1.2rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(255,87,34,0.5);
-            margin: 1.5rem auto;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .register-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s;
-        }
-        
-        .register-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255,87,34,0.7);
-        }
-        
-        .register-btn:hover::before {
-            opacity: 1;
-        }
-        
-        .register-btn i {
-            margin-left: 0.8rem;
-            transition: transform 0.3s;
-        }
-        
-        .register-btn:hover i {
-            transform: translateX(5px);
-        }
-        
-        .rules {
-            background-color: rgba(0,0,0,0.7);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            margin: 4rem 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-        }
-        
-        .rules h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            text-align: center;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-        
-        .rules h4 {
-            color: var(--gold);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .rules-container {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 87, 34, 0.1));
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            align-items: flex-start;
         }
         
-        .rules-column {
-            flex: 1 1 300px;
+        .prize-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-right: 1rem;
+            min-width: 40px;
+            text-align: center;
         }
         
-        .rules ul {
+        .prize-content h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .prize-content p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .rules-list {
             list-style-type: none;
         }
         
-        .rules li {
-            padding: 0.8rem 0;
-            position: relative;
-            padding-left: 2rem;
-            color: #eee;
-            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        .rules-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
         }
         
-        .rules li::before {
-            content: "•";
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .rules-list i {
             color: var(--primary);
+            margin-right: 0.8rem;
+            margin-top: 0.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            position: absolute;
-            left: 0;
-            font-size: 1.5rem;
-            line-height: 1;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
+            gap: 0.5rem;
         }
         
-        .rules li strong {
-            color: var(--gold);
-            font-weight: 600;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 87, 34, 0.4);
+            background-color: #e64a19;
         }
         
-        .form-container {
-            background-color: rgba(0,0,0,0.7);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            margin: 4rem 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
+        .btn-secondary {
+            background-color: var(--secondary);
+            box-shadow: 0 4px 8px rgba(96, 125, 139, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #455a64;
+            box-shadow: 0 6px 12px rgba(96, 125, 139, 0.4);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+        }
+        
+        .team-card {
+            background-color: rgba(69, 90, 100, 0.5);
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .team-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.8rem;
+            border: 3px solid var(--accent);
+        }
+        
+        .team-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--accent);
+        }
+        
+        .team-members {
+            font-size: 0.85rem;
+            opacity: 0.8;
         }
         
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 1rem 1.2rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background-color: rgba(255,255,255,0.1);
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.3);
             color: white;
-        }
-        
-        .form-control::placeholder {
-            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255,87,34,0.3);
-            background-color: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.3);
         }
         
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
         }
         
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1rem;
+        .form-buttons .btn {
+            margin-top: 0;
+            flex: 1;
+            min-width: 120px;
         }
         
-        .btn-container {
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .payment-method {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .payment-method input {
+            display: none;
+        }
+        
+        .payment-method label {
+            display: block;
+            padding: 0.8rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
             text-align: center;
-            margin-top: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-method input:checked + label {
+            background-color: rgba(255, 87, 34, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.3);
         }
         
         footer {
-            background-color: rgba(0,0,0,0.9);
-            color: white;
             text-align: center;
-            padding: 3rem 1rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--primary);
-            position: relative;
-        }
-        
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 10px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        footer h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        footer p {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-top: 2rem;
         }
         
         .social-links {
-            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
         }
         
         .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            font-size: 1.2rem;
-            margin: 0 0.5rem;
-            transition: all 0.3s;
-            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
         }
         
         .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
+            color: var(--primary);
+            transform: translateY(-2px);
         }
         
-        .whatsapp-float {
+        .notification {
             position: fixed;
-            bottom: 2.5rem;
-            right: 2.5rem;
-            background-color: var(--whatsapp);
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
             color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 70px;
-            font-size: 2rem;
-            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
-            z-index: 100;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            max-width: 90%;
+            font-size: 0.9rem;
         }
         
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 8px 25px rgba(37,211,102,0.7);
-            animation: none;
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification i {
+            margin-right: 0.6rem;
+            font-size: 1rem;
         }
         
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
-        .countdown {
-            background-color: rgba(255, 87, 34, 0.2);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            text-align: center;
-            border: 1px solid rgba(255, 87, 34, 0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .countdown h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
         }
         
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .countdown-item {
-            background-color: rgba(0,0,0,0.5);
-            padding: 0.8rem;
-            border-radius: 8px;
-            min-width: 80px;
-            border: 1px solid var(--primary);
-        }
-        
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .countdown-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        @media (max-width: 992px) {
-            header h1 {
-                font-size: 2.8rem;
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        @media (min-width: 576px) {
+            .logo {
+                flex-direction: row;
+                text-align: left;
             }
             
-            header h2 {
-                font-size: 2rem;
+            .logo img {
+                margin-bottom: 0;
+                margin-right: 15px;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                padding: 3rem 1rem;
-                min-height: auto;
-            }
-            
-            .header-content {
-                padding: 1.5rem;
-            }
-            
-            header h1 {
-                font-size: 2.2rem;
-            }
-            
-            header h2 {
-                font-size: 1.6rem;
-            }
-            
-            .prize-card {
-                flex: 1 1 100%;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .rules, .form-container {
-                padding: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            header h2 {
-                font-size: 1.3rem;
-            }
-            
-            .register-btn, .register-btn-header {
-                width: 100%;
-                padding: 1.2rem;
-            }
-            
-            .whatsapp-float {
-                width: 60px;
-                height: 60px;
-                line-height: 60px;
-                font-size: 1.8rem;
-                bottom: 1.5rem;
-                right: 1.5rem;
-            }
-            
-            .countdown-timer {
-                flex-wrap: wrap;
+            nav a {
+                font-size: 0.9rem;
+                padding: 0.5rem 1.2rem;
             }
             
             .countdown-item {
-                min-width: 70px;
+                min-width: 80px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-text p {
+                font-size: 1rem;
+            }
+            
+            nav {
+                padding: 0.8rem;
+                border-radius: 50px;
+                max-width: 800px;
+            }
+            
+            nav a {
+                font-size: 1rem;
+                padding: 0.5rem 1.5rem;
+                margin: 0 0.3rem;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+                margin: 2rem auto;
+            }
+            
+            .section {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .countdown {
+                gap: 1.5rem;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 1.2rem;
+            }
+            
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.9rem;
+            }
+            
+            .prize-card {
+                padding: 1.5rem;
+            }
+            
+            .prize-icon {
+                font-size: 2.2rem;
+            }
+            
+            .prize-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .logo img {
+                height: 80px;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
     </style>
 </head>
 <body>
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span id="notification-text">Pendaftaran turnamen telah dibuka!</span>
+    </div>
+    
     <header>
-        <div class="header-content">
-            <h1>TURNAMEN MOBILE LEGENDS</h1>
-            <h2>WARKOP IYAH CHAMPIONSHIP 2025</h2>
-            <a href="#register" class="register-btn-header">DAFTAR SEKARANG <i class="fas fa-arrow-right"></i></a>
+        <div class="logo">
+            <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Image" />
+            <div class="logo-text">
+                <h1>TURNAMEN MLBB</h1>
+                <p>WARKOP IYAH SEASON 1</p>
+            </div>
         </div>
+        
+        <nav>
+            <a href="#home" class="active"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> Tentang</a>
+            <a href="#rules"><i class="fas fa-book"></i> Peraturan</a>
+            <a href="#prize"><i class="fas fa-trophy"></i> Hadiah</a>
+            <a href="#register"><i class="fas fa-edit"></i> Daftar</a>
+        </nav>
     </header>
-
+    
     <div class="container">
-        <div class="countdown">
-            <h4>WAKTU MENUJU TURNAMEN:</h4>
-            <div class="countdown-timer">
+        <section id="home" class="section fade-in">
+            <div class="section-title">
+                <i class="fas fa-home"></i>
+                <h2>TURNAMEN MLBB S1</h2>
+            </div>
+            
+            <p>Selamat datang di turnamen Mobile Legends: Bang Bang resmi Warkop IYAH Season 3! Turnamen ini terbuka untuk semua kalangan dengan total hadiah jutaan rupiah. Ayo buktikan bahwa timmu yang terbaik!</p>
+            
+            <div class="countdown fade-in delay-1">
                 <div class="countdown-item">
                     <div class="countdown-number" id="days">00</div>
                     <div class="countdown-label">Hari</div>
@@ -706,215 +618,315 @@
                     <div class="countdown-label">Detik</div>
                 </div>
             </div>
-        </div>
+            
+            <div style="text-align: center;">
+                <a href="#register" class="btn fade-in delay-2"><i class="fas fa-edit"></i> Daftar Sekarang</a>
+            </div>
+        </section>
         
-        <h2 class="section-title">HADIAH MENARIK MENANTI ANDA!</h2>
+        <section id="about" class="section fade-in delay-1">
+            <div class="section-title">
+                <i class="fas fa-info-circle"></i>
+                <h2>Tentang Turnamen</h2>
+            </div>
+            
+            <p>Turnamen MLBB Warkop IYAH Season 1 adalah kompetisi Mobile Legends: Bang Bang yang diselenggarakan oleh Warkop IYAH untuk menghibur masyarakat dan mencari bakat-bakat baru di dunia Esports.</p>
+            
+            <p><strong>Detail Turnamen:</strong></p>
+            <ul class="rules-list">
+                <li><i class="fas fa-calendar-alt"></i> <strong>Tanggal:</strong>  10 Juni 2025 - Selesai</li>
+                <i class="fas fa-microphone"></i> <strong>Technical Meeting:</strong> 7 Juni 2025</li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Tempat:</strong> WARKOP IYAH, CIBATU</li>
+                <li><i class="fas fa-users"></i> <strong>Format:</strong> 5v5 (Single Elimination)</li>
+                <li><i class="fas fa-money-bill-wave"></i> <strong>Biaya Pendaftaran:</strong> Rp 100.000 per tim</li>
+                <li><i class="fas fa-user-friends"></i> <strong>Slot Tim:</strong> Maksimal 32 tim</li>
+            </ul>
+        </section>
         
-        <div class="prize-section">
+        <section id="rules" class="section fade-in delay-2">
+            <div class="section-title">
+                <i class="fas fa-book"></i>
+                <h2>Peraturan Turnamen</h2>
+            </div>
+            
+            <p>Berikut adalah peraturan resmi yang harus dipatuhi oleh semua peserta:</p>
+            
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Umum</h3>
+            <ul class="rules-list">
+                <li><i class="fas fa-check-circle"></i> Setiap tim terdiri dari 5 pemain utama dan maksimal 2 cadangan.</li>
+                <li><i class="fas fa-check-circle"></i> Peserta wajib hadir 30 menit sebelum jadwal pertandingan.</li>
+                <li><i class="fas fa-check-circle"></i> Keterlambatan lebih dari 15 menit akan dianggap mengundurkan diri.</li>
+                <li><i class="fas fa-check-circle"></i> Semua pemain harus menggunakan akun asli (bukan akun pinjaman).</li>
+                <li><i class="fas fa-check-circle"></i> Dilarang menggunakan cheat, hack, atau exploit apapun.</li>
+            </ul>
+            
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Teknis</h3>
+            <ul class="rules-list">
+                <li><i class="fas fa-check-circle"></i> Mode: Custom Game - Draft Pick</li>
+                <li><i class="fas fa-check-circle"></i> Server: Lokal (Indonesia)</li>
+                <li><i class="fas fa-check-circle"></i> Map: Land of Dawn</li>
+                <li><i class="fas fa-check-circle"></i> Hero: Semua hero yang tersedia (termasuk hero baru)</li>
+                <li><i class="fas fa-check-circle"></i> Skin: Diperbolehkan menggunakan semua skin</li>
+                <li><i class="fas fa-check-circle"></i> Emblem: Diperbolehkan menggunakan emblem apapun</li>
+            </ul>
+            
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Tambahan</h3>
+            <ul class="rules-list">
+                <li><i class="fas fa-check-circle"></i> Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</li>
+                <li><i class="fas fa-check-circle"></i> Panitia berhak mendiskualifikasi tim yang melanggar peraturan.</li>
+                <li><i class="fas fa-check-circle"></i> Turnamen akan disiarkan langsung di YouTube Warkop IYAH.</li>
+            </ul>
+        </section>
+
+        <section id="prize" class="section fade-in delay-3">
+            <div class="section-title">
+                <i class="fas fa-trophy"></i>
+                <h2>Hadiah Turnamen</h2>
+            </div>
+            
+            <p>Total hadiah turnamen senilai <strong>Rp 3.000.000</strong> dengan rincian sebagai berikut:</p>
+            
             <div class="prize-card">
-                <h3>JUARA 1</h3>
-                <div class="price">Technical Meeting</div>
-                <div class="bonus">Sertifikat</div>
-                <div class="bonus">Kaos Eksklusif</div>
-                <div class="bonus">Tiket Turnamen di Jakarta</div>
+                <div class="prize-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="prize-content">
+                    <h3>Juara 1</h3>
+                    <p>Rp 1.500.000 + Sertifikat</p>
+                </div>
             </div>
             
-            <div class="prize-card second">
-                <h3>JUARA 2</h3>
-                <div class="price">Technical Meeting</div>
-                <div class="bonus">Sertifikat</div>
-                <div class="bonus">Kaos Eksklusif</div>
+            <div class="prize-card">
+                <div class="prize-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="prize-content">
+                    <h3>Juara 2</h3>
+                    <p>Rp 750.000 + Sertifikat</p>
+                </div>
             </div>
             
-            <div class="prize-card third">
-                <h3>JUARA 3</h3>
-                <div class="price">Technical Meeting</div>
-                <div class="bonus">Sertifikat</div>
-                <div class="bonus">Kaos Eksklusif</div>
+            <div class="prize-card">
+                <div class="prize-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="prize-content">
+                    <h3>Juara 3</h3>
+                    <p>Rp 500.000 + Sertifikat</p>
+                </div>
             </div>
-        </div>
-
-        <div class="btn-container">
-            <a href="#register" class="register-btn">DAFTAR SEKARANG <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="rules">
-            <h3>PERSYARATAN DAN KETENTUAN TURNAMEN</h3>
             
-            <div class="rules-container">
-                <div class="rules-column">
-                    <h4>Informasi Umum</h4>
-                    <ul>
-                        <li><strong>Tanggal:</strong> 7 Juni 2025 - 10 Juni 2025</li>
-                        <li><strong>Lokasi:</strong> Warkop Iyah, Jl. Raya Sadang - Subang, Purwakarta</li>
-                        <li><strong>Biaya Pendaftaran:</strong> Rp100.000 per tim (5 orang)</li>
-                        <li><strong>Slot Tim:</strong> Maksimal 32 tim (First come first served)</li>
-                                                <li><strong>HTM:</strong> Wajib membeli menu yang tersedia</li>
-                        <li>Turnamen terbuka untuk umum (usia minimal 16 tahun)</li>
-                    </ul>
-                    
-                    <h4>Persyaratan Tim</h4>
-                    <ul>
-                        <li>Setiap tim terdiri dari 5 pemain utama + 1 cadangan (opsional)</li>
-                        <li>Wajib memiliki nama tim yang unik dan tidak mengandung SARA</li>
-                        <li>Setiap pemain hanya boleh tergabung dalam 1 tim</li>
-                        <li>Peserta wajib menunjukkan identitas asli saat registrasi ulang</li>
-                    </ul>
-                </div>
-                
-                <div class="rules-column">
-                    <h4>Aturan Pertandingan</h4>
-                    <ul>
-                        <li><strong>Sistem:</strong> Single Elimination</li>
-                        <li><strong>Babak Penyisihan:</strong> Best of 3</li>
-                        <li><strong>Semifinal:</strong> Best of 5</li>
-                        <li><strong>Final:</strong> Best of 7</li>
-                        <li>Hero dan skin disesuaikan dengan akun masing-masing</li>
-                        <li>Dilarang menggunakan hero bug/glitch yang diketahui</li>
-                        <li>Taunting diperbolehkan asal tidak toxic dan tidak mengandung SARA</li>
-                    </ul>
-                    
-                    <h4>Peraturan Umum</h4>
-                    <ul>
-                        <li>Peserta wajib hadir 30 menit sebelum jadwal pertandingan</li>
-                        <li>Keterlambatan lebih dari 15 menit = diskualifikasi</li>
-                        <li>Peserta membawa perangkat sendiri (HP/Tablet) + charger</li>
-                        <li>Koneksi internet disediakan panitia (WiFi 100Mbps)</li>
-                        <li>Dilarang keras menggunakan cheat, hack, atau software ilegal</li>
-                        <li>Pelanggaran akan berakibat diskualifikasi tanpa refund</li>
-                        <li>Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat</li>
-                    </ul>
-                </div>
+            <p style="margin-top: 1.2rem; font-size: 0.9rem;"><em>*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya</em></p>
+        </section>
+        
+        <section id="register" class="section fade-in delay-4">
+            <div class="section-title">
+                <i class="fas fa-edit"></i>
+                <h2>Formulir Pendaftaran</h2>
             </div>
-        </div>
-
-        <div id="register" class="form-container">
-            <h3 class="section-title">FORMULIR PENDAFTARAN</h3>
-            <form id="registrationForm">
+            
+            <p>Isi formulir berikut untuk mendaftarkan tim Anda dalam turnamen ini. Pastikan semua data yang dimasukkan valid.</p>
+            
+            <form id="registration-form">
                 <div class="form-group">
-                    <label for="team-name">Nama Tim*</label>
-                    <input type="text" id="team-name" class="form-control" required placeholder="Contoh: Team Elite Warriors">
+                    <label for="team-name">Nama Tim</label>
+                    <input type="text" id="team-name" class="form-control" placeholder="Masukkan nama tim" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="leader-name">Nama Ketua Tim*</label>
-                    <input type="text" id="leader-name" class="form-control" required placeholder="Nama lengkap ketua tim">
+                    <label for="team-leader">Nama Leader Tim</label>
+                    <input type="text" id="team-leader" class="form-control" placeholder="Nama lengkap leader" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Nomor WhatsApp*</label>
-                    <input type="tel" id="phone" class="form-control" required placeholder="Contoh: 081234567890" pattern="[0-9]{10,13}">
+                    <label for="team-contact">Nomor WhatsApp</label>
+                    <input type="tel" id="team-contact" class="form-control" placeholder="Contoh: 081234567890" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="members">Nama Anggota Tim (5 orang utama)*</label>
-                    <textarea id="members" class="form-control" required placeholder="Tulis nama lengkap semua anggota. Contoh: 
-1. Andi Wijaya (ID ML: 123456789) - Role: Gold Lane
-2. Budi Santoso (ID ML: 987654321) - Role: EXP Lane
-3. Citra Dewi (ID ML: 567891234) - Role: Mid Lane
-4. Dedi Prabowo (ID ML: 432156789) - Role: Roamer
-5. Eka Putri (ID ML: 678912345) - Role: Jungler"
-></textarea>
+                    <label for="team-members">Anggota Tim</label>
+                    <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung 3. Ronggur 4. Yanto 5. Sungkem)" required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label for="payment">Metode Pembayaran*</label>
-                    <select id="payment" class="form-control" required>
-                        <option value="" disabled selected>Pilih metode pembayaran</option>
-                        <option value="DANA">DANA (0838-8548-795)</option>
-                        <option value="Cash">CASH DI WARKOP IYAH</option>
-                    </select>
+                    <label>Metode Pembayaran</label>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <input type="radio" id="cash" name="payment" value="CASH" checked>
+                            <label for="cash"><i class="fas fa-money-bill-wave"></i> CASH</label>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label>
-                        <input type="checkbox" required> Saya menyetujui semua syarat dan ketentuan turnamen
-                    </label>
-                </div>
-                
-                <div class="btn-container">
-                    <button type="submit" class="register-btn">KIRIM PENDAFTARAN <i class="fab fa-whatsapp"></i></button>
+                <div class="form-buttons">
+                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Daftarkan Tim</button>
+                    <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset Form</button>
                 </div>
             </form>
-        </div>
+        </section>
     </div>
-
+    
     <footer>
-        <h3>WARKOP IYAH ESPORTS</h3>
-        <p>Jl. Raya Sadang - Subang, Purwakarta, Jawa Barat</p>
-        <p>Buka setiap hari: 14.00 - 02.00 WIB</p>
-        <p>Contact: 0813-7050-4313 (Panitia Turnamen)</p>
-        <p>Email: warungkopiiyah@gmail.com</p>
+        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+            <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Image" />
+            <div class="logo-text">
+                <h3 style="font-size: 1.3rem;">WARKOP IYAH</h3>
+                <p style="font-size: 0.9rem;">TURNAMEN MLBB SEASON 1</p>
+            </div>
+        </div>
         
         <div class="social-links">
-            <a href="https://instagram.com/warkopiyah" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com/@warkopiyah" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
         
-        <p>&copy; 2025 Warkop Iyah. All Rights Reserved.</p>
+        <p style="font-size: 0.9rem;">&copy; 2023 WARKOP IYAH. SEMUA HAK DILINDUNGI.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.8rem;">Turnamen ini tidak berafiliasi dengan Moonton.</p>
     </footer>
-
-    <a href="https://wa.me/6281370504313?text=Halo%20panitia%20turnamen%20ML%20Warkop%20Iyah,%20saya%20ingin%20bertanya..." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
+    
     <script>
         function updateCountdown() {
-            const tournamentDate = new Date('June 7, 2025 09:00:00').getTime();
+            const endDate = new Date("Juni 10, 2025 09:00:00").getTime();
             const now = new Date().getTime();
-            const distance = tournamentDate - now;
+            const distance = endDate - now;
             
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
             
             if (distance < 0) {
                 clearInterval(countdownTimer);
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
             }
         }
         
         const countdownTimer = setInterval(updateCountdown, 1000);
         updateCountdown();
         
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+        
+        function setActiveNavLink() {
+            const sections = document.querySelectorAll('.section');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', setActiveNavLink);
+        window.addEventListener('load', setActiveNavLink);
+        
+        function showNotification(message, duration = 3000) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+        
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const teamName = document.getElementById('team-name').value;
-            const leaderName = document.getElementById('leader-name').value;
-            const phone = document.getElementById('phone').value;
-            const members = document.getElementById('members').value;
-            const payment = document.getElementById('payment').value;
+            const teamLeader = document.getElementById('team-leader').value;
+            const teamLeaderId = document.getElementById('team-leader-id').value;
+            const teamContact = document.getElementById('team-contact').value;
+            const teamMembers = document.getElementById('team-members').value;
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
             
-            const message = `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH 2025*%0A%0A
-*Nama Tim:* ${teamName}%0A
-*Ketua Tim:* ${leaderName}%0A
-*Nomor WhatsApp:* ${phone}%0A
-*Anggota Tim:*%0A${members.replace(/\n/g, '%0A')}%0A
-*Metode Pembayaran:* ${payment}%0A%0A
-*Konfirmasi Pembayaran:*%0A
-Silakan lakukan pembayaran Rp100.000 sesuai metode yang dipilih dan kirim bukti transfer melalui WhatsApp ini.%0A%0A
-_*Pendaftaran hanya valid setelah pembayaran dikonfirmasi oleh panitia_%0A%0A
-Terima kasih telah mendaftar!`;
+            const whatsappMessage = `* FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
+                                   `*Nama Tim:* ${teamName}%0A` +
+                                   `*Leader Tim:* ${teamLeader}%0A` +
+                                   `*Nomor WhatsApp:* ${teamContact}%0A` +
+                                   `*Metode Pembayaran:* ${paymentMethod}%0A%0A` +
+                                   `*Anggota Tim:*%0A${teamMembers.replace(/\n/g, '%0A')}%0A%0A` +
+                                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_`;
             
-            window.open(`https://wa.me/6281370504313?text=${message}`, '_blank');
+            window.open(`https://wa.me/6281370504313?text=${whatsappMessage}`, '_blank');
+            
+            showNotification('Formulir berhasil diisi! Anda akan diarahkan ke WhatsApp.');
             
             this.reset();
-            
-            alert('Formulir pendaftaran berhasil diisi! Anda akan diarahkan ke WhatsApp untuk mengirim data pendaftaran dan melakukan konfirmasi pembayaran.');
         });
         
-        document.getElementById('phone').addEventListener('input', function(e) {
-            this.value = this.value.replace(/[^0-9]/g, '');
+        setTimeout(() => {
+            showNotification('Pendaftaran turnamen telah dibuka! Daftarkan tim Anda sekarang.');
+        }, 2000);
+        
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView();
+                    }, 100);
+                }
+            }
         });
     </script>
 </body>
