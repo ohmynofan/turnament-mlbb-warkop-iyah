@@ -411,6 +411,60 @@
             box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.3);
         }
         
+        .payment-upload {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--input-bg);
+            border-radius: 6px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+        
+        .payment-upload.active {
+            display: block;
+        }
+        
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            cursor: pointer;
+        }
+        
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-upload p {
+            margin: 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-preview {
+            display: none;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .file-preview img {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 4px;
+        }
+        
+        .file-preview.active {
+            display: block;
+        }
+        
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -1043,12 +1097,12 @@
             
             <p><strong class="lang-tournament-details">Detail Turnamen:</strong></p>
             <ul class="rules-list">
-                <li><i class="fas fa-calendar-alt"></i> <strong class="lang-date">Tanggal:</strong> <span class="lang-date-value">14 Juni 2025 - Selesai</span></li>
-                <li><i class="fas fa-user-plus"></i> <strong class="lang-registration">Pendaftaran:</strong> <span class="lang-registration-value">Close 13 Juni 2025</span></li>
-                <li><i class="fas fa-map-marker-alt"></i> <strong class="lang-location">Tempat:</strong> <span class="lang-location-value">WARKOP IYAH, CIBATU</span></li>
-                <li><i class="fas fa-users"></i> <strong class="lang-format">Format:</strong> <span class="lang-format-value">5v5 (Single Elimination)</span></li>
-                <li><i class="fas fa-money-bill-wave"></i> <strong class="lang-fee">Biaya Pendaftaran:</strong> <span class="lang-fee-value">Rp 100.000 per tim</span></li>
-                <li><i class="fas fa-user-friends"></i> <strong class="lang-slots">Slot Tim:</strong> <span class="lang-slots-value">Maksimal 32 tim</span></li>
+                <li><i class="fas fa-calendar-alt"></i> <strong class="lang-date">Tanggal:</strong> <span class="lang-date-value"> 14 Juni 2025 - Selesai</span></li>
+                <li><i class="fas fa-user-plus"></i> <strong class="lang-registration">Pendaftaran:</strong> <span class="lang-registration-value"> Close 13 Juni 2025</span></li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong class="lang-location">Tempat:</strong> <span class="lang-location-value"> WARKOP IYAH, CIBATU</span></li>
+                <li><i class="fas fa-users"></i> <strong class="lang-format">Format:</strong> <span class="lang-format-value"> 5v5 (Single Elimination)</span></li>
+                <li><i class="fas fa-money-bill-wave"></i> <strong class="lang-fee">Biaya Pendaftaran:</strong> <span class="lang-fee-value"> Rp 100.000 per tim</span></li>
+                <li><i class="fas fa-user-friends"></i> <strong class="lang-slots">Slot Tim:</strong> <span class="lang-slots-value"> Maksimal 32 tim</span></li>
             </ul>
         </section>
         
@@ -1181,6 +1235,25 @@
                         <div class="payment-method">
                             <input type="radio" id="cash" name="payment" value="CASH" checked>
                             <label for="cash"><i class="fas fa-money-bill-wave"></i> <span class="lang-cash">CASH</span></label>
+                        </div>
+                        <div class="payment-method">
+                            <input type="radio" id="dana" name="payment" value="DANA">
+                            <label for="dana"><i class="fas fa-wallet"></i> <span class="lang-dana">DANA</span></label>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-upload" id="danaUpload">
+                        <div class="file-upload" id="fileUploadArea">
+                            <input type="file" id="paymentProof" accept="image/*">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="lang-upload-text">Unggah bukti transfer DANA</p>
+                            <p style="font-size: 0.8rem; opacity: 0.8;" class="lang-dana-number">Nomor DANA: 08388548795</p>
+                        </div>
+                        <div class="file-preview" id="filePreview">
+                            <img id="previewImage" src="" alt="Bukti Pembayaran">
+                            <button type="button" id="removeFile" class="btn btn-secondary" style="margin-top: 0.5rem; padding: 0.3rem 0.8rem; font-size: 0.8rem;">
+                                <i class="fas fa-trash"></i> <span class="lang-remove-file">Hapus File</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1319,6 +1392,10 @@
                 'team-members': 'Anggota Tim',
                 'payment-method': 'Metode Pembayaran',
                 'cash': 'CASH',
+                'dana': 'DANA',
+                'upload-text': 'Unggah bukti transfer DANA',
+                'dana-number': 'Nomor DANA: 08388548795',
+                'remove-file': 'Hapus File',
                 'submit-form': 'Daftarkan Tim',
                 'reset-form': 'Reset Form',
                 'generate-cert': 'Generate Sertifikat',
@@ -1398,6 +1475,10 @@
                 'team-members': 'Team Members',
                 'payment-method': 'Payment Method',
                 'cash': 'CASH',
+                'dana': 'DANA',
+                'upload-text': 'Upload DANA payment proof',
+                'dana-number': 'DANA Number: 08388548795',
+                'remove-file': 'Remove File',
                 'submit-form': 'Register Team',
                 'reset-form': 'Reset Form',
                 'generate-cert': 'Generate Certificate',
@@ -1756,6 +1837,63 @@
             });
         });
 
+        const cashPayment = document.getElementById('cash');
+        const danaPayment = document.getElementById('dana');
+        const danaUpload = document.getElementById('danaUpload');
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const fileInput = document.getElementById('paymentProof');
+        const filePreview = document.getElementById('filePreview');
+        const previewImage = document.getElementById('previewImage');
+        const removeFileBtn = document.getElementById('removeFile');
+        
+        function togglePaymentMethod() {
+            if (danaPayment.checked) {
+                danaUpload.classList.add('active');
+            } else {
+                danaUpload.classList.remove('active');
+                filePreview.classList.remove('active');
+                fileInput.value = '';
+            }
+        }
+        
+        cashPayment.addEventListener('change', togglePaymentMethod);
+        danaPayment.addEventListener('change', togglePaymentMethod);
+        
+        fileUploadArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                if (file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        previewImage.src = event.target.result;
+                        filePreview.classList.add('active');
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: currentLanguage === 'id' ? 'Format File Tidak Didukung' : 'Unsupported File Format',
+                        text: currentLanguage === 'id' 
+                            ? 'Silakan unggah file gambar (JPG, PNG, dll.)' 
+                            : 'Please upload an image file (JPG, PNG, etc.)',
+                        confirmButtonColor: '#FF5722'
+                    });
+                    fileInput.value = '';
+                }
+            }
+        });
+        
+        removeFileBtn.addEventListener('click', function() {
+            fileInput.value = '';
+            filePreview.classList.remove('active');
+        });
+
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1764,6 +1902,7 @@
             const teamContact = document.getElementById('team-contact').value;
             const teamMembers = document.getElementById('team-members').value;
             const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const paymentFile = fileInput.files[0];
             
             const whatsappRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
             if (!whatsappRegex.test(teamContact)) {
@@ -1778,29 +1917,51 @@
                 return;
             }
             
+            if (paymentMethod === 'DANA' && !paymentFile) {
+                Swal.fire({
+                    icon: 'error',
+                    title: currentLanguage === 'id' ? 'Bukti Pembayaran Dibutuhkan' : 'Payment Proof Required',
+                    text: currentLanguage === 'id' 
+                        ? 'Silakan unggah bukti transfer DANA terlebih dahulu!' 
+                        : 'Please upload DANA payment proof first!',
+                    confirmButtonColor: '#FF5722'
+                });
+                return;
+            }
+            
             const formattedMembers = teamMembers.split('\n')
                 .map(line => line.trim())
                 .filter(line => line !== '')
                 .join('%0A');
             
-            const whatsappMessage = currentLanguage === 'id'
+            let whatsappMessage = currentLanguage === 'id'
                 ? `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
                   `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
                   `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
                   `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
                   `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Anggota Tim:*%0A${formattedMembers}%0A%0A` +
-                  `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A` +
-                  `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
-                  `Terima Kasih telah mendaftar!`
+                  `*Anggota Tim:*%0A${formattedMembers}%0A%0A`
                 : `*MLBB TOURNAMENT REGISTRATION FORM WARKOP IYAH*%0A%0A` +
                   `*Team Name:* ${encodeURIComponent(teamName)}%0A` +
                   `*Team Leader:* ${encodeURIComponent(teamLeader)}%0A` +
                   `*WhatsApp Number:* ${encodeURIComponent(teamContact)}%0A` +
                   `*Payment Method:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Team Members:*%0A${formattedMembers}%0A%0A` +
-                  `*Payment Confirmation:*%0APlease make payment of Rp100,000 directly at WARKOP IYAH by June 13, 2025%0A%0A` +
-                  `_This registration was sent via Warkop IYAH website_%0A%0A` +
+                  `*Team Members:*%0A${formattedMembers}%0A%0A`;
+            
+            if (paymentMethod === 'CASH') {
+                whatsappMessage += currentLanguage === 'id'
+                    ? `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A`
+                    : `*Payment Confirmation:*%0APlease make payment of Rp100,000 directly at WARKOP IYAH by June 13, 2025%0A%0A`;
+            } else if (paymentMethod === 'DANA') {
+                whatsappMessage += currentLanguage === 'id'
+                    ? `*Konfirmasi Pembayaran:*%0ATransfer DANA ke nomor 08388548795 sebesar Rp100.000%0A%0A`
+                    : `*Payment Confirmation:*%0ADANA transfer to number 08388548795 for Rp100,000%0A%0A`;
+            }
+            
+            whatsappMessage += currentLanguage === 'id'
+                ? `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
+                  `Terima Kasih telah mendaftar!`
+                : `_This registration was sent via Warkop IYAH website_%0A%0A` +
                   `Thank you for registering!`;
             
             Swal.fire({
@@ -1812,11 +1973,26 @@
                 confirmButtonColor: '#FF5722',
                 confirmButtonText: currentLanguage === 'id' ? 'OK' : 'OK',
                 willClose: () => {
-                    window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
+                    if (paymentMethod === 'DANA' && paymentFile) {
+                        const formData = new FormData();
+                        formData.append('teamName', teamName);
+                        formData.append('teamLeader', teamLeader);
+                        formData.append('teamContact', teamContact);
+                        formData.append('teamMembers', teamMembers);
+                        formData.append('paymentMethod', paymentMethod);
+                        formData.append('paymentProof', paymentFile);
+                        
+                        window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
+                    } else {
+                        window.location.href = `https://wa.me/6281370504313?text=${whatsappMessage}`;
+                    }
                 }
             });
             
             this.reset();
+            filePreview.classList.remove('active');
+            danaUpload.classList.remove('active');
+            cashPayment.checked = true;
         });
         
         document.addEventListener('DOMContentLoaded', function() {
