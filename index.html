@@ -6,8 +6,8 @@
     <title>FORM PENDAFTARAN TOURNAMENT MLBB - WARKOP IYAH 2025</title>
     <link rel="icon" type="png" href="https://i.supaimg.com/6d4de194-82c8-4814-bbb5-817bc7df471c.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tambahkan SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         :root {
             --primary: #FF5722;
@@ -628,23 +628,143 @@
             color: var(--accent);
         }
         
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; 
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .map-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        #certificate-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #certificate {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        #certificate h1 {
+            color: #FF5722;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        #certificate h2 {
+            color: #263238;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        #certificate p {
+            margin: 0.5rem 0;
+            color: #455A64;
+        }
+        
+        #certificate .team-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FF5722;
+            margin: 1.5rem 0;
+        }
+        
+        #certificate .signature {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        #certificate .signature div {
+            width: 45%;
+        }
+        
+        #certificate .signature-line {
+            border-top: 1px solid #263238;
+            margin-top: 4rem;
+            padding-top: 0.5rem;
+        }
+        
+        #certificate .logo-cert {
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+        
+        #certificate .date {
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        #certificate-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #263238;
+        }
+        
+        #download-certificate {
+            margin-top: 2rem;
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        #download-certificate:hover {
+            background-color: #E64A19;
+            transform: translateY(-2px);
+        }
+        
         @media print {
             body * {
                 visibility: hidden;
             }
-            .print-content, .print-content * {
+            #certificate, #certificate * {
                 visibility: visible;
             }
-            .print-content {
+            #certificate {
                 position: absolute;
-                left: 0;
                 top: 0;
+                left: 0;
                 width: 100%;
-                padding: 20px;
+                height: auto;
+                padding: 2cm;
                 background-color: white;
-                color: black;
             }
-            .no-print {
+            #certificate-close, #download-certificate {
                 display: none;
             }
         }
@@ -668,6 +788,12 @@
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
+        
+        .directions-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
     
         @media (min-width: 576px) {
             .logo {
@@ -870,6 +996,7 @@
             <a href="#rules"><i class="fas fa-book"></i> <span class="lang-rules">Peraturan</span></a>
             <a href="#prize"><i class="fas fa-trophy"></i> <span class="lang-prize">Hadiah</span></a>
             <a href="#register"><i class="fas fa-edit"></i> <span class="lang-register">Daftar</span></a>
+            <a href="#location"><i class="fas fa-map-marker-alt"></i> <span class="lang-location">Lokasi</span></a>
         </nav>
     </header>
     
@@ -1001,6 +1128,24 @@
             <p style="margin-top: 1.2rem; font-size: 0.9rem;"><em class="lang-prize-note">*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya</em></p>
         </section>
         
+        <section id="location" class="section fade-in delay-3">
+            <div class="section-title">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2 class="lang-location-title">Lokasi WARKOP IYAH</h2>
+            </div>
+            
+            <p class="lang-location-description">Turnamen akan diselenggarakan di WARKOP IYAH, CIBATU. Berikut peta lokasinya:</p>
+            
+            <div class="map-container">
+                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.800944508996!2d107.6182903147726!3d-6.912168995003812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a7a8b5d5a5%3A0x3e5f7f1b9b5b5b5b!2sWARKOP%20IYAH!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" 
+                        frameborder="0" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="directions-container">
+                <a href="https://maps.app.goo.gl/DtM4wZqKS88LYV929" target="_blank" class="btn"><i class="fas fa-directions"></i> <span class="lang-directions">Dapatkan Petunjuk Arah</span></a>
+            </div>
+        </section>
+        
         <section id="register" class="section fade-in delay-4">
             <div class="section-title">
                 <i class="fas fa-edit"></i>
@@ -1043,7 +1188,7 @@
                 <div class="form-buttons">
                     <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> <span class="lang-submit-form">Daftarkan Tim</span></button>
                     <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> <span class="lang-reset-form">Reset Form</span></button>
-                    <button type="button" id="printBtn" class="btn btn-secondary no-print"><i class="fas fa-print"></i> <span class="lang-print-form">Cetak Formulir</span></button>
+                    <button type="button" id="generateCertBtn" class="btn btn-secondary"><i class="fas fa-certificate"></i> <span class="lang-generate-cert">Generate Sertifikat</span></button>
                 </div>
             </form>
         </section>
@@ -1069,57 +1214,35 @@
         <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.8rem;" class="lang-affiliation">Turnamen ini tidak berafiliasi dengan Moonton.</p>
     </footer>
     
-    <div id="printContent" class="print-content" style="display: none;">
-        <h1 style="text-align: center; margin-bottom: 1rem;" class="lang-print-title">BUKTI PENDAFTARAN TURNAMEN MLBB</h1>
-        <h2 style="text-align: center; margin-bottom: 2rem; color: #FF5722;">WARKOP IYAH SEASON 1</h2>
-        
-        <div style="margin-bottom: 2rem;">
-            <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Logo Turnamen" style="display: block; margin: 0 auto; height: 100px;">
-        </div>
-        
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
-            <tr>
-                <td style="width: 30%; padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;" class="lang-print-team">Nama Tim</td>
-                <td style="width: 70%; padding: 8px; border-bottom: 1px solid #ddd;" id="printTeamName"></td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;" class="lang-print-leader">Leader Tim</td>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="printTeamLeader"></td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;" class="lang-print-contact">Nomor WhatsApp</td>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="printTeamContact"></td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;" class="lang-print-date">Tanggal Pendaftaran</td>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="printDate"></td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;" class="lang-print-payment">Metode Pembayaran</td>
-                <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="printPayment"></td>
-            </tr>
-        </table>
-        
-        <h3 style="margin: 1.5rem 0 0.5rem; color: #FF5722;" class="lang-print-members">Anggota Tim</h3>
-        <div id="printTeamMembers" style="margin-bottom: 2rem;"></div>
-        
-        <div style="margin-top: 3rem; border-top: 1px solid #333; padding-top: 1rem;">
-            <div style="float: left; width: 50%;">
-                <p style="text-align: center;" class="lang-print-participant">Tanda Tangan Peserta</p>
-                <p style="height: 50px; margin-top: 50px;"></p>
-                <p style="text-align: center;">(__________________________)</p>
+    <div id="certificate-container">
+        <div id="certificate">
+            <button id="certificate-close">&times;</button>
+            <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Logo WARKOP IYAH" class="logo-cert">
+            <h1 class="lang-certificate-title">SERTIFIKAT PENDAFTARAN</h1>
+            <h2 class="lang-certificate-subtitle">TURNAMEN MLBB WARKOP IYAH SEASON 1</h2>
+            
+            <p class="lang-certificate-text">Diberikan kepada:</p>
+            <div class="team-name" id="cert-team-name"></div>
+            
+            <p class="lang-certificate-text">Telah mendaftarkan tim untuk mengikuti Turnamen MLBB WARKOP IYAH Season 1 yang akan diselenggarakan pada:</p>
+            <p><strong class="lang-certificate-date">14 Juni 2025</strong></p>
+            <p class="lang-certificate-text">di WARKOP IYAH, CIBATU</p>
+            
+            <div class="signature">
+                <div>
+                    <div class="signature-line"></div>
+                    <p class="lang-certificate-participant">Peserta</p>
+                </div>
+                <div>
+                    <div class="signature-line"></div>
+                    <p class="lang-certificate-committee">Panitia WARKOP IYAH</p>
+                </div>
             </div>
-            <div style="float: right; width: 50%;">
-                <p style="text-align: center;" class="lang-print-committee">Tanda Tangan Panitia</p>
-                <p style="height: 50px; margin-top: 50px;"></p>
-                <p style="text-align: center;">(__________________________)</p>
-            </div>
-            <div style="clear: both;"></div>
+            
+            <p class="date" id="cert-date"></p>
+            
+            <button id="download-certificate" class="btn"><i class="fas fa-download"></i> <span class="lang-download-cert">Unduh Sertifikat</span></button>
         </div>
-        
-        <p style="margin-top: 2rem; font-size: 0.8rem; text-align: center;" class="lang-print-note">
-            *Harap bawa bukti pendaftaran ini saat melakukan pembayaran di WARKOP IYAH
-        </p>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -1134,6 +1257,7 @@
                 'rules': 'Peraturan',
                 'prize': 'Hadiah',
                 'register': 'Daftar',
+                'location': 'Lokasi',
                 'tournament-title': 'TURNAMEN MLBB S1',
                 'welcome-message': 'Selamat datang di turnamen Mobile Legends: Bang Bang resmi WARKOP IYAH Season 1! Turnamen ini terbuka untuk semua kalangan dengan total hadiah jutaan rupiah. Ayo buktikan bahwa timmu yang terbaik!',
                 'days': 'Hari',
@@ -1184,6 +1308,9 @@
                 'third-place': 'Juara 3',
                 'third-prize': 'Rp 750.000 + Sertifikat',
                 'prize-note': '*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya',
+                'location-title': 'Lokasi WARKOP IYAH',
+                'location-description': 'Turnamen akan diselenggarakan di WARKOP IYAH, CIBATU. Berikut peta lokasinya:',
+                'directions': 'Dapatkan Petunjuk Arah',
                 'registration-form': 'Formulir Pendaftaran',
                 'form-instruction': 'Isi formulir berikut untuk mendaftarkan tim Anda dalam turnamen ini. Pastikan semua data yang dimasukkan valid.',
                 'team-name': 'Nama Tim',
@@ -1194,20 +1321,17 @@
                 'cash': 'CASH',
                 'submit-form': 'Daftarkan Tim',
                 'reset-form': 'Reset Form',
-                'print-form': 'Cetak Formulir',
+                'generate-cert': 'Generate Sertifikat',
                 'footer-text': 'TURNAMEN MLBB SEASON 1',
                 'rights-reserved': 'SEMUA HAK DILINDUNGI.',
                 'affiliation': 'Turnamen ini tidak berafiliasi dengan Moonton.',
-                'print-title': 'BUKTI PENDAFTARAN TURNAMEN MLBB',
-                'print-team': 'Nama Tim',
-                'print-leader': 'Leader Tim',
-                'print-contact': 'Nomor WhatsApp',
-                'print-date': 'Tanggal Pendaftaran',
-                'print-payment': 'Metode Pembayaran',
-                'print-members': 'Anggota Tim',
-                'print-participant': 'Tanda Tangan Peserta',
-                'print-committee': 'Tanda Tangan Panitia',
-                'print-note': '*Harap bawa bukti pendaftaran ini saat melakukan pembayaran di WARKOP IYAH'
+                'certificate-title': 'SERTIFIKAT PENDAFTARAN',
+                'certificate-subtitle': 'TURNAMEN MLBB WARKOP IYAH SEASON 1',
+                'certificate-text': 'Diberikan kepada:',
+                'certificate-date': '14 Juni 2025',
+                'certificate-participant': 'Peserta',
+                'certificate-committee': 'Panitia WARKOP IYAH',
+                'download-cert': 'Unduh Sertifikat'
             },
             'en': {
                 'home': 'Home',
@@ -1215,6 +1339,7 @@
                 'rules': 'Rules',
                 'prize': 'Prize',
                 'register': 'Register',
+                'location': 'Location',
                 'tournament-title': 'MLBB TOURNAMENT S1',
                 'welcome-message': 'Welcome to the official Mobile Legends: Bang Bang tournament WARKOP IYAH Season 1! This tournament is open to everyone with total prizes worth millions of rupiah. Prove that your team is the best!',
                 'days': 'Days',
@@ -1262,6 +1387,9 @@
                       "2. 2nd Place: Rp 1,000,000 + Certificate<br>" +
                       "3. 3rd Place: Rp 750,000 + Certificate",
                 'prize-note': '*Prizes may change at any time with prior notice',
+                'location-title': 'WARKOP IYAH Location',
+                'location-description': 'The tournament will be held at WARKOP IYAH, CIBATU. Here is the location map:',
+                'directions': 'Get Directions',
                 'registration-form': 'Registration Form',
                 'form-instruction': 'Fill out the following form to register your team in this tournament. Make sure all data entered is valid.',
                 'team-name': 'Team Name',
@@ -1272,20 +1400,17 @@
                 'cash': 'CASH',
                 'submit-form': 'Register Team',
                 'reset-form': 'Reset Form',
-                'print-form': 'Print Form',
+                'generate-cert': 'Generate Certificate',
                 'footer-text': 'MLBB TOURNAMENT SEASON 1',
                 'rights-reserved': 'ALL RIGHTS RESERVED.',
                 'affiliation': 'This tournament is not affiliated with Moonton.',
-                'print-title': 'MLBB TOURNAMENT REGISTRATION PROOF',
-                'print-team': 'Team Name',
-                'print-leader': 'Team Leader',
-                'print-contact': 'WhatsApp Number',
-                'print-date': 'Registration Date',
-                'print-payment': 'Payment Method',
-                'print-members': 'Team Members',
-                'print-participant': 'Participant Signature',
-                'print-committee': 'Committee Signature',
-                'print-note': '*Please bring this registration proof when making payment at WARKOP IYAH'
+                'certificate-title': 'REGISTRATION CERTIFICATE',
+                'certificate-subtitle': 'MLBB WARKOP IYAH TOURNAMENT SEASON 1',
+                'certificate-text': 'Awarded to:',
+                'certificate-date': 'June 14, 2025',
+                'certificate-participant': 'Participant',
+                'certificate-committee': 'WARKOP IYAH Committee',
+                'download-cert': 'Download Certificate'
             }
         };
         
@@ -1497,46 +1622,6 @@
             });
         });
         
-        const printBtn = document.getElementById('printBtn');
-        
-        printBtn.addEventListener('click', () => {
-            const teamName = document.getElementById('team-name').value;
-            const teamLeader = document.getElementById('team-leader').value;
-            const teamContact = document.getElementById('team-contact').value;
-            const teamMembers = document.getElementById('team-members').value;
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            
-            if (!teamName || !teamLeader || !teamContact || !teamMembers) {
-                Swal.fire({
-                    icon: 'error',
-                    title: currentLanguage === 'id' ? 'Formulir Tidak Lengkap' : 'Incomplete Form',
-                    text: currentLanguage === 'id' 
-                        ? 'Harap isi semua data terlebih dahulu!' 
-                        : 'Please fill in all data first!',
-                    confirmButtonColor: '#FF5722'
-                });
-                return;
-            }
-            
-            document.getElementById('printTeamName').textContent = teamName;
-            document.getElementById('printTeamLeader').textContent = teamLeader;
-            document.getElementById('printTeamContact').textContent = teamContact;
-            document.getElementById('printPayment').textContent = paymentMethod;
-            document.getElementById('printDate').textContent = new Date().toLocaleDateString(currentLanguage === 'id' ? 'id-ID' : 'en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            const membersList = teamMembers.split('\n').map(line => {
-                return line.trim() ? `<p style="margin: 0.3rem 0;">${line.trim()}</p>` : '';
-            }).join('');
-            document.getElementById('printTeamMembers').innerHTML = membersList;
-            
-            window.print();
-        });
-        
         function updateCountdown() {
             const endDate = new Date("Juni 14, 2025 09:00:00").getTime();
             const now = new Date().getTime();
@@ -1610,6 +1695,67 @@
         window.addEventListener('scroll', setActiveNavLink);
         window.addEventListener('load', setActiveNavLink);
 
+        const generateCertBtn = document.getElementById('generateCertBtn');
+        const certificateContainer = document.getElementById('certificate-container');
+        const certTeamName = document.getElementById('cert-team-name');
+        const certDate = document.getElementById('cert-date');
+        const certificateClose = document.getElementById('certificate-close');
+        const downloadCertificateBtn = document.getElementById('download-certificate');
+        
+        generateCertBtn.addEventListener('click', function() {
+            const teamName = document.getElementById('team-name').value;
+            const teamLeader = document.getElementById('team-leader').value;
+            
+            if (!teamName || !teamLeader) {
+                Swal.fire({
+                    icon: 'error',
+                    title: currentLanguage === 'id' ? 'Formulir Tidak Lengkap' : 'Incomplete Form',
+                    text: currentLanguage === 'id' 
+                        ? 'Harap isi nama tim dan leader terlebih dahulu!' 
+                        : 'Please fill in team name and leader first!',
+                    confirmButtonColor: '#FF5722'
+                });
+                return;
+            }
+            
+            certTeamName.textContent = teamName;
+            
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            
+            if (currentLanguage === 'id') {
+                certDate.textContent = new Date().toLocaleDateString('id-ID', options);
+            } else {
+                certDate.textContent = new Date().toLocaleDateString('en-US', options);
+            }
+            
+            certificateContainer.style.display = 'flex';
+        });
+        
+        certificateClose.addEventListener('click', function() {
+            certificateContainer.style.display = 'none';
+        });
+        
+        downloadCertificateBtn.addEventListener('click', function() {
+            const certificate = document.getElementById('certificate');
+            
+            html2canvas(certificate, {
+                scale: 2,
+                logging: false,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Sertifikat_Pendaftaran_' + document.getElementById('team-name').value + '.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1632,13 +1778,18 @@
                 return;
             }
             
+            const formattedMembers = teamMembers.split('\n')
+                .map(line => line.trim())
+                .filter(line => line !== '')
+                .join('%0A');
+            
             const whatsappMessage = currentLanguage === 'id'
                 ? `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
                   `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
                   `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
                   `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
                   `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Anggota Tim:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
+                  `*Anggota Tim:*%0A${formattedMembers}%0A%0A` +
                   `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A` +
                   `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
                   `Terima Kasih telah mendaftar!`
@@ -1647,7 +1798,7 @@
                   `*Team Leader:* ${encodeURIComponent(teamLeader)}%0A` +
                   `*WhatsApp Number:* ${encodeURIComponent(teamContact)}%0A` +
                   `*Payment Method:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Team Members:*%0A${encodeURIComponent(teamMembers.replace(/\n/g, '%0A'))}%0A%0A` +
+                  `*Team Members:*%0A${formattedMembers}%0A%0A` +
                   `*Payment Confirmation:*%0APlease make payment of Rp100,000 directly at WARKOP IYAH by June 13, 2025%0A%0A` +
                   `_This registration was sent via Warkop IYAH website_%0A%0A` +
                   `Thank you for registering!`;
