@@ -258,6 +258,57 @@
             font-size: 0.9rem;
         }
         
+        .schedule-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .schedule-time {
+            min-width: 100px;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: rgba(255, 87, 34, 0.2);
+            border-radius: 6px;
+            margin-right: 1rem;
+            border: 1px solid var(--primary);
+        }
+        
+        .schedule-time .day {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .schedule-time .time {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .schedule-content {
+            flex: 1;
+        }
+        
+        .schedule-content h3 {
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        .schedule-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -656,32 +707,6 @@
             color: var(--accent);
         }
         
-        .language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 70px;
-            z-index: 999;
-            background-color: var(--section-bg);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .language-toggle:hover {
-            transform: scale(1.1);
-        }
-        
-        .language-toggle i {
-            font-size: 1.2rem;
-            color: var(--accent);
-        }
-        
         .map-container {
             position: relative;
             overflow: hidden;
@@ -874,6 +899,10 @@
                 min-width: 120px;
                 font-size: 0.95rem;
             }
+            
+            .schedule-time {
+                min-width: 120px;
+            }
         }
         
         @media (min-width: 768px) {
@@ -947,6 +976,10 @@
             .team-grid {
                 grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             }
+            
+            .schedule-item {
+                padding: 1.2rem;
+            }
         }
         
         @media (min-width: 992px) {
@@ -960,6 +993,10 @@
             
             .team-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .schedule-time {
+                min-width: 150px;
             }
         }
         
@@ -981,6 +1018,17 @@
           .countdown-label {
             font-size: 0.7rem;
           }
+          
+          .schedule-item {
+              flex-direction: column;
+              align-items: flex-start;
+          }
+          
+          .schedule-time {
+              margin-right: 0;
+              margin-bottom: 0.8rem;
+              width: 100%;
+          }
         }
         
         @media (min-width: 576px) and (max-width: 767px) {
@@ -996,10 +1044,6 @@
     </style>
 </head>
 <body>
-    
-    <div class="language-toggle" id="languageToggle" title="Toggle Language">
-        <i class="fas fa-language"></i>
-    </div>
     
     <div class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
@@ -1045,12 +1089,13 @@
         </div>
         
         <nav>
-            <a href="#home" class="active"><i class="fas fa-home"></i> <span class="lang-home">Beranda</span></a>
-            <a href="#about"><i class="fas fa-info-circle"></i> <span class="lang-about">Tentang</span></a>
-            <a href="#rules"><i class="fas fa-book"></i> <span class="lang-rules">Peraturan</span></a>
-            <a href="#prize"><i class="fas fa-trophy"></i> <span class="lang-prize">Hadiah</span></a>
-            <a href="#register"><i class="fas fa-edit"></i> <span class="lang-register">Daftar</span></a>
-            <a href="#location"><i class="fas fa-map-marker-alt"></i> <span class="lang-location">Lokasi</span></a>
+            <a href="#home" class="active"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> Tentang</a>
+            <a href="#schedule"><i class="fas fa-calendar-alt"></i> Jadwal</a>
+            <a href="#rules"><i class="fas fa-book"></i> Peraturan</a>
+            <a href="#prize"><i class="fas fa-trophy"></i> Hadiah</a>
+            <a href="#register"><i class="fas fa-edit"></i> Daftar</a>
+            <a href="#location"><i class="fas fa-map-marker-alt"></i> Lokasi</a>
         </nav>
     </header>
     
@@ -1058,104 +1103,159 @@
         <section id="home" class="section fade-in">
             <div class="section-title">
                 <i class="fas fa-home"></i>
-                <h2 class="lang-tournament-title">TURNAMEN MLBB S1</h2>
+                <h2>TURNAMEN MLBB S1</h2>
             </div>
             
-            <p class="lang-welcome-message">Selamat datang di turnamen Mobile Legends: Bang Bang resmi WARKOP IYAH Season 1! Turnamen ini terbuka untuk semua kalangan dengan total hadiah jutaan rupiah. Ayo buktikan bahwa timmu yang terbaik!</p>
+            <p>Selamat datang di turnamen Mobile Legends: Bang Bang resmi WARKOP IYAH Season 1! Turnamen ini terbuka untuk semua kalangan dengan total hadiah jutaan rupiah. Ayo buktikan bahwa timmu yang terbaik!</p>
             
             <div class="countdown fade-in delay-1">
                 <div class="countdown-item">
                     <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label lang-days">Hari</div>
+                    <div class="countdown-label">Hari</div>
                 </div>
                 <div class="countdown-item">
                     <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label lang-hours">Jam</div>
+                    <div class="countdown-label">Jam</div>
                 </div>
                 <div class="countdown-item">
                     <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label lang-minutes">Menit</div>
+                    <div class="countdown-label">Menit</div>
                 </div>
                 <div class="countdown-item">
                     <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label lang-seconds">Detik</div>
+                    <div class="countdown-label">Detik</div>
                 </div>
             </div>
             
             <div style="text-align: center;">
-                <a href="#register" class="btn fade-in delay-2"><i class="fas fa-edit"></i> <span class="lang-register-now">Daftar Sekarang</span></a>
+                <a href="#register" class="btn fade-in delay-2"><i class="fas fa-edit"></i> Daftar Sekarang</a>
             </div>
         </section>
         
         <section id="about" class="section fade-in delay-1">
             <div class="section-title">
                 <i class="fas fa-info-circle"></i>
-                <h2 class="lang-about-tournament">Tentang Turnamen</h2>
+                <h2>Tentang Turnamen</h2>
             </div>
             
-            <p class="lang-about-description">Turnamen MLBB WARKOP IYAH Season 1 adalah kompetisi Mobile Legends: Bang Bang yang diselenggarakan oleh WARKOP IYAH untuk menghibur masyarakat dan mencari bakat-bakat baru di dunia Esports.</p>
+            <p>Turnamen MLBB WARKOP IYAH Season 1 adalah kompetisi Mobile Legends: Bang Bang yang diselenggarakan oleh WARKOP IYAH untuk menghibur masyarakat dan mencari bakat-bakat baru di dunia Esports.</p>
             
-            <p><strong class="lang-tournament-details">Detail Turnamen:</strong></p>
+            <p><strong>Detail Turnamen:</strong></p>
             <ul class="rules-list">
-                <li><i class="fas fa-calendar-alt"></i> <strong class="lang-date">Tanggal:</strong> <span class="lang-date-value"> 14 Juni 2025 - Selesai</span></li>
-                <li><i class="fas fa-user-plus"></i> <strong class="lang-registration">Pendaftaran:</strong> <span class="lang-registration-value"> Close 13 Juni 2025</span></li>
-                <li><i class="fas fa-map-marker-alt"></i> <strong class="lang-location">Tempat:</strong> <span class="lang-location-value"> WARKOP IYAH, CIBATU</span></li>
-                <li><i class="fas fa-users"></i> <strong class="lang-format">Format:</strong> <span class="lang-format-value"> 5v5 (Single Elimination)</span></li>
-                <li><i class="fas fa-money-bill-wave"></i> <strong class="lang-fee">Biaya Pendaftaran:</strong> <span class="lang-fee-value"> Rp 100.000 per tim</span></li>
-                <li><i class="fas fa-user-friends"></i> <strong class="lang-slots">Slot Tim:</strong> <span class="lang-slots-value"> Maksimal 32 tim</span></li>
+                <li><i class="fas fa-calendar-alt"></i> <strong>Tanggal:</strong> 14 Juni 2025 - Selesai</li>
+                <li><i class="fas fa-user-plus"></i> <strong>Pendaftaran:</strong> Close 13 Juni 2025</li>
+                <li><i class="fas fa-map-marker-alt"></i> <strong>Tempat:</strong> WARKOP IYAH, CIBATU</li>
+                <li><i class="fas fa-users"></i> <strong>Format:</strong> 5v5 (Single Elimination)</li>
+                <li><i class="fas fa-money-bill-wave"></i> <strong>Biaya Pendaftaran:</strong> Rp 100.000 per tim</li>
+                <li><i class="fas fa-user-friends"></i> <strong>Slot Tim:</strong> Maksimal 32 tim</li>
             </ul>
+        </section>
+        
+        <section id="schedule" class="section fade-in delay-2">
+            <div class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>Jadwal Turnamen</h2>
+            </div>
+            
+            <p>Berikut adalah rundown lengkap acara turnamen MLBB WARKOP IYAH Season 1:</p>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <div class="day">Jumat</div>
+                    <div class="time">13 Juni 2025</div>
+                </div>
+                <div class="schedule-content">
+                    <h3>Technical Meeting & Penutupan Pendaftaran</h3>
+                    <p>Pembagian jadwal pertandingan dan penjelasan teknis untuk semua tim yang lolos</p>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <div class="day">Sabtu</div>
+                    <div class="time">18.00 - 23.00 WIB</div>
+                </div>
+                <div class="schedule-content">
+                    <h3>Babak Penyisihan</h3>
+                    <p>Pertandingan babak penyisihan untuk menentukan 4 tim terbaik</p>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <div class="day">Minggu</div>
+                    <div class="time">16.00 - 21.00 WIB</div>
+                </div>
+                <div class="schedule-content">
+                    <h3>Semifinal & Final</h3>
+                    <p>Pertandingan semifinal dan final untuk menentukan juara turnamen</p>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">
+                    <div class="day">Minggu</div>
+                    <div class="time">21.00 WIB</div>
+                </div>
+                <div class="schedule-content">
+                    <h3>Pengumuman Pemenang & Penyerahan Hadiah</h3>
+                    <p>Pengumuman juara 1, 2, dan 3 serta penyerahan hadiah</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1rem; font-size: 0.9rem;"><em>*Jadwal bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya</em></p>
         </section>
         
         <section id="rules" class="section fade-in delay-2">
             <div class="section-title">
                 <i class="fas fa-book"></i>
-                <h2 class="lang-tournament-rules">Peraturan Turnamen</h2>
+                <h2>Peraturan Turnamen</h2>
             </div>
             
-            <p class="lang-rules-intro">Berikut adalah peraturan resmi yang harus dipatuhi oleh semua peserta:</p>
+            <p>Berikut adalah peraturan resmi yang harus dipatuhi oleh semua peserta:</p>
             
-            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);" class="lang-general-rules">Peraturan Umum</h3>
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Umum</h3>
             <ul class="rules-list">
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-1">Setiap tim terdiri dari 5 pemain utama dan maksimal 2 cadangan.</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-2">Peserta wajib hadir 30 menit sebelum jadwal pertandingan.</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-3">Keterlambatan lebih dari 15 menit akan dianggap mengundurkan diri.</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-4">Semua pemain harus menggunakan akun asli (bukan akun pinjaman).</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-5">Dilarang menggunakan cheat, hack, atau exploit apapun.</span></li>
+                <li><i class="fas fa-check-circle"></i> Setiap tim terdiri dari 5 pemain utama dan maksimal 2 cadangan.</li>
+                <li><i class="fas fa-check-circle"></i> Peserta wajib hadir 30 menit sebelum jadwal pertandingan.</li>
+                <li><i class="fas fa-check-circle"></i> Keterlambatan lebih dari 15 menit akan dianggap mengundurkan diri.</li>
+                <li><i class="fas fa-check-circle"></i> Semua pemain harus menggunakan akun asli (bukan akun pinjaman).</li>
+                <li><i class="fas fa-check-circle"></i> Dilarang menggunakan cheat, hack, atau exploit apapun.</li>
             </ul>
             
-            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);" class="lang-technical-rules">Peraturan Teknis</h3>
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Teknis</h3>
             <ul class="rules-list">
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-6">Mode: Custom Game - Draft Pick</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-7">Server: Lokal (Indonesia)</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-8">Map: Land of Dawn</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-9">Hero: Semua hero yang tersedia (termasuk hero baru)</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-10">Skin: Diperbolehkan menggunakan semua skin</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-11">Emblem: Diperbolehkan menggunakan emblem apapun</span></li>
+                <li><i class="fas fa-check-circle"></i> Mode: Custom Game - Draft Pick</li>
+                <li><i class="fas fa-check-circle"></i> Server: Lokal (Indonesia)</li>
+                <li><i class="fas fa-check-circle"></i> Map: Land of Dawn</li>
+                <li><i class="fas fa-check-circle"></i> Hero: Semua hero yang tersedia (termasuk hero baru)</li>
+                <li><i class="fas fa-check-circle"></i> Skin: Diperbolehkan menggunakan semua skin</li>
+                <li><i class="fas fa-check-circle"></i> Emblem: Diperbolehkan menggunakan emblem apapun</li>
             </ul>
             
-            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);" class="lang-additional-rules">Peraturan Tambahan</h3>
+            <h3 style="margin: 1.2rem 0 0.8rem; color: var(--accent);">Peraturan Tambahan</h3>
             <ul class="rules-list">
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-12">Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-13">Panitia berhak mendiskualifikasi tim yang melanggar peraturan.</span></li>
-                <li><i class="fas fa-check-circle"></i> <span class="lang-rule-14">Turnamen akan disiarkan langsung di WARKOP IYAH (Semifinal & Final)</span></li>
+                <li><i class="fas fa-check-circle"></i> Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.</li>
+                <li><i class="fas fa-check-circle"></i> Panitia berhak mendiskualifikasi tim yang melanggar peraturan.</li>
+                <li><i class="fas fa-check-circle"></i> Turnamen akan disiarkan langsung di WARKOP IYAH (Semifinal & Final)</li>
             </ul>
         </section>
         
         <section id="prize" class="section fade-in delay-3">
             <div class="section-title">
                 <i class="fas fa-trophy"></i>
-                <h2 class="lang-prize-title">Hadiah Turnamen</h2>
+                <h2>Hadiah Turnamen</h2>
             </div>
             
-            <p class="lang-prize-description">Total hadiah turnamen senilai <strong>Rp 3.500.000</strong> dengan rincian sebagai berikut:</p>
+            <p>Total hadiah turnamen senilai <strong>Rp 3.500.000</strong> dengan rincian sebagai berikut:</p>
             
             <div class="prize-card">
                 <div class="prize-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
                 <div class="prize-content">
-                    <h3 class="lang-first-place">Juara 1</h3>
-                    <p class="lang-first-prize">Rp 1.500.000 + Sertifikat</p>
+                    <h3>Juara 1</h3>
+                    <p>Rp 1.500.000 + Sertifikat</p>
                 </div>
             </div>
             
@@ -1164,8 +1264,8 @@
                     <i class="fas fa-medal"></i>
                 </div>
                 <div class="prize-content">
-                    <h3 class="lang-second-place">Juara 2</h3>
-                    <p class="lang-second-prize">Rp 1.000.000 + Sertifikat</p>
+                    <h3>Juara 2</h3>
+                    <p>Rp 1.000.000 + Sertifikat</p>
                 </div>
             </div>
             
@@ -1174,21 +1274,21 @@
                     <i class="fas fa-award"></i>
                 </div>
                 <div class="prize-content">
-                    <h3 class="lang-third-place">Juara 3</h3>
-                    <p class="lang-third-prize">Rp 750.000 + Sertifikat</p>
+                    <h3>Juara 3</h3>
+                    <p>Rp 750.000 + Sertifikat</p>
                 </div>
             </div>
             
-            <p style="margin-top: 1.2rem; font-size: 0.9rem;"><em class="lang-prize-note">*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya</em></p>
+            <p style="margin-top: 1.2rem; font-size: 0.9rem;"><em>*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya</em></p>
         </section>
         
         <section id="location" class="section fade-in delay-3">
             <div class="section-title">
                 <i class="fas fa-map-marker-alt"></i>
-                <h2 class="lang-location-title">Lokasi WARKOP IYAH</h2>
+                <h2>Lokasi WARKOP IYAH</h2>
             </div>
             
-            <p class="lang-location-description">Turnamen akan diselenggarakan di WARKOP IYAH, CIBATU. Berikut peta lokasinya:</p>
+            <p>Turnamen akan diselenggarakan di WARKOP IYAH, CIBATU. Berikut peta lokasinya:</p>
             
             <div class="map-container">
                 <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.800944508996!2d107.6182903147726!3d-6.912168995003812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a7a8b5d5a5%3A0x3e5f7f1b9b5b5b5b!2sWARKOP%20IYAH!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" 
@@ -1196,49 +1296,49 @@
             </div>
             
             <div class="directions-container">
-                <a href="https://maps.app.goo.gl/DtM4wZqKS88LYV929" target="_blank" class="btn"><i class="fas fa-directions"></i> <span class="lang-directions">Dapatkan Petunjuk Arah</span></a>
+                <a href="https://maps.app.goo.gl/DtM4wZqKS88LYV929" target="_blank" class="btn"><i class="fas fa-directions"></i> Dapatkan Petunjuk Arah</a>
             </div>
         </section>
         
         <section id="register" class="section fade-in delay-4">
             <div class="section-title">
                 <i class="fas fa-edit"></i>
-                <h2 class="lang-registration-form">Formulir Pendaftaran</h2>
+                <h2>Formulir Pendaftaran</h2>
             </div>
             
-            <p class="lang-form-instruction">Isi formulir berikut untuk mendaftarkan tim Anda dalam turnamen ini. Pastikan semua data yang dimasukkan valid.</p>
+            <p>Isi formulir berikut untuk mendaftarkan tim Anda dalam turnamen ini. Pastikan semua data yang dimasukkan valid.</p>
             
             <form id="registration-form">
                 <div class="form-group">
-                    <label for="team-name" class="lang-team-name">Nama Tim</label>
+                    <label for="team-name">Nama Tim</label>
                     <input type="text" id="team-name" class="form-control" placeholder="Masukkan nama tim" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="team-leader" class="lang-team-leader">Nama Leader Tim</label>
+                    <label for="team-leader">Nama Leader Tim</label>
                     <input type="text" id="team-leader" class="form-control" placeholder="Nama lengkap leader" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="team-contact" class="lang-team-contact">Nomor WhatsApp</label>
+                    <label for="team-contact">Nomor WhatsApp</label>
                     <input type="tel" id="team-contact" class="form-control" placeholder="Contoh: 081234567890" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="team-members" class="lang-team-members">Anggota Tim</label>
+                    <label for="team-members">Anggota Tim</label>
                     <textarea id="team-members" class="form-control" rows="4" placeholder="Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung 3. Sungkem 4. Ronggur 5. Stang Mio)." required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label class="lang-payment-method">Metode Pembayaran</label>
+                    <label>Metode Pembayaran</label>
                     <div class="payment-methods">
                         <div class="payment-method">
                             <input type="radio" id="cash" name="payment" value="CASH" checked>
-                            <label for="cash"><i class="fas fa-money-bill-wave"></i> <span class="lang-cash">CASH</span></label>
+                            <label for="cash"><i class="fas fa-money-bill-wave"></i> CASH</label>
                         </div>
                         <div class="payment-method">
                             <input type="radio" id="dana" name="payment" value="DANA">
-                            <label for="dana"><i class="fas fa-wallet"></i> <span class="lang-dana">DANA</span></label>
+                            <label for="dana"><i class="fas fa-wallet"></i> DANA</label>
                         </div>
                     </div>
                     
@@ -1246,22 +1346,22 @@
                         <div class="file-upload" id="fileUploadArea">
                             <input type="file" id="paymentProof" accept="image/*">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <p class="lang-upload-text">Unggah bukti transfer DANA</p>
-                            <p style="font-size: 0.8rem; opacity: 0.8;" class="lang-dana-number">Nomor DANA: 08388548795</p>
+                            <p>Unggah bukti transfer DANA</p>
+                            <p style="font-size: 0.8rem; opacity: 0.8;">Nomor DANA: 08388548795</p>
                         </div>
                         <div class="file-preview" id="filePreview">
                             <img id="previewImage" src="" alt="Bukti Pembayaran">
                             <button type="button" id="removeFile" class="btn btn-secondary" style="margin-top: 0.5rem; padding: 0.3rem 0.8rem; font-size: 0.8rem;">
-                                <i class="fas fa-trash"></i> <span class="lang-remove-file">Hapus File</span>
+                                <i class="fas fa-trash"></i> Hapus File
                             </button>
                         </div>
                     </div>
                 </div>
                 
                 <div class="form-buttons">
-                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> <span class="lang-submit-form">Daftarkan Tim</span></button>
-                    <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> <span class="lang-reset-form">Reset Form</span></button>
-                    <button type="button" id="generateCertBtn" class="btn btn-secondary"><i class="fas fa-certificate"></i> <span class="lang-generate-cert">Generate Sertifikat</span></button>
+                    <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Daftarkan Tim</button>
+                    <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset Form</button>
+                    <button type="button" id="generateCertBtn" class="btn btn-secondary"><i class="fas fa-certificate"></i> Generate Sertifikat</button>
                 </div>
             </form>
         </section>
@@ -1272,7 +1372,7 @@
             <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Image" />
             <div class="logo-text">
                 <h3 style="font-size: 1.3rem;">WARUNG KOPI IYAH</h3>
-                <p style="font-size: 0.9rem;" class="lang-footer-text">TURNAMEN MLBB SEASON 1</p>
+                <p style="font-size: 0.9rem;">TURNAMEN MLBB SEASON 1</p>
             </div>
         </div>
         
@@ -1283,260 +1383,43 @@
             <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
         
-        <p style="font-size: 0.9rem;">&copy; 2025 WARKOP IYAH. <span class="lang-rights-reserved">SEMUA HAK DILINDUNGI.</span></p>
-        <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.8rem;" class="lang-affiliation">Turnamen ini tidak berafiliasi dengan Moonton.</p>
+        <p style="font-size: 0.9rem;">&copy; 2025 WARKOP IYAH. SEMUA HAK DILINDUNGI.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.8rem;">Turnamen ini tidak berafiliasi dengan Moonton.</p>
     </footer>
     
     <div id="certificate-container">
         <div id="certificate">
             <button id="certificate-close">&times;</button>
             <img src="https://i.supaimg.com/fd03ef6f-67d2-45b3-b5b9-2ed48648d1ba.png" alt="Logo WARKOP IYAH" class="logo-cert">
-            <h1 class="lang-certificate-title">SERTIFIKAT PENDAFTARAN</h1>
-            <h2 class="lang-certificate-subtitle">TURNAMEN MLBB WARKOP IYAH SEASON 1</h2>
+            <h1>SERTIFIKAT PENDAFTARAN</h1>
+            <h2>TURNAMEN MLBB WARKOP IYAH SEASON 1</h2>
             
-            <p class="lang-certificate-text">Diberikan kepada:</p>
+            <p>Diberikan kepada:</p>
             <div class="team-name" id="cert-team-name"></div>
             
-            <p class="lang-certificate-text">Telah mendaftarkan tim untuk mengikuti Turnamen MLBB WARKOP IYAH Season 1 yang akan diselenggarakan pada:</p>
-            <p><strong class="lang-certificate-date">14 Juni 2025</strong></p>
-            <p class="lang-certificate-text">di WARKOP IYAH, CIBATU</p>
+            <p>Telah mendaftarkan tim untuk mengikuti Turnamen MLBB WARKOP IYAH Season 1 yang akan diselenggarakan pada:</p>
+            <p><strong>14 Juni 2025</strong></p>
+            <p>di WARKOP IYAH, CIBATU</p>
             
             <div class="signature">
                 <div>
                     <div class="signature-line"></div>
-                    <p class="lang-certificate-participant">Peserta</p>
+                    <p>Peserta</p>
                 </div>
                 <div>
                     <div class="signature-line"></div>
-                    <p class="lang-certificate-committee">Panitia WARKOP IYAH</p>
+                    <p>Panitia WARKOP IYAH</p>
                 </div>
             </div>
             
             <p class="date" id="cert-date"></p>
             
-            <button id="download-certificate" class="btn"><i class="fas fa-download"></i> <span class="lang-download-cert">Unduh Sertifikat</span></button>
+            <button id="download-certificate" class="btn"><i class="fas fa-download"></i> Unduh Sertifikat</button>
         </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        const languageToggle = document.getElementById('languageToggle');
-        let currentLanguage = 'id'; 
-        
-        const languages = {
-            'id': {
-                'home': 'Beranda',
-                'about': 'Tentang',
-                'rules': 'Peraturan',
-                'prize': 'Hadiah',
-                'register': 'Daftar',
-                'location': 'Lokasi:',
-                'location-menu': 'Tempat',
-                'tournament-title': 'TURNAMEN MLBB S1',
-                'welcome-message': 'Selamat datang di turnamen Mobile Legends: Bang Bang resmi WARKOP IYAH Season 1! Turnamen ini terbuka untuk semua kalangan dengan total hadiah jutaan rupiah. Ayo buktikan bahwa timmu yang terbaik!',
-                'days': 'Hari',
-                'hours': 'Jam',
-                'minutes': 'Menit',
-                'seconds': 'Detik',
-                'register-now': 'Daftar Sekarang',
-                'about-tournament': 'Tentang Turnamen',
-                'about-description': 'Turnamen MLBB WARKOP IYAH Season 1 adalah kompetisi Mobile Legends: Bang Bang yang diselenggarakan oleh WARKOP IYAH untuk menghibur masyarakat dan mencari bakat-bakat baru di dunia Esports.',
-                'tournament-details': 'Detail Turnamen:',
-                'date': 'Tanggal:',
-                'date-value': '14 Juni 2025 - Selesai',
-                'registration': 'Pendaftaran:',
-                'registration-value': 'Close 13 Juni 2025',
-                'location': 'Tempat:',
-                'location-value': 'WARKOP IYAH, CIBATU',
-                'format': 'Format:',
-                'format-value': '5v5 (Single Elimination)',
-                'fee': 'Biaya Pendaftaran:',
-                'fee-value': 'Rp 100.000 per tim',
-                'slots': 'Slot Tim:',
-                'slots-value': 'Maksimal 32 tim',
-                'tournament-rules': 'Peraturan Turnamen',
-                'rules-intro': 'Berikut adalah peraturan resmi yang harus dipatuhi oleh semua peserta:',
-                'general-rules': 'Peraturan Umum',
-                'rule-1': 'Setiap tim terdiri dari 5 pemain utama dan maksimal 2 cadangan.',
-                'rule-2': 'Peserta wajib hadir 30 menit sebelum jadwal pertandingan.',
-                'rule-3': 'Keterlambatan lebih dari 15 menit akan dianggap mengundurkan diri.',
-                'rule-4': 'Semua pemain harus menggunakan akun asli (bukan akun pinjaman).',
-                'rule-5': 'Dilarang menggunakan cheat, hack, atau exploit apapun.',
-                'technical-rules': 'Peraturan Teknis',
-                'rule-6': 'Mode: Custom Game - Draft Pick',
-                'rule-7': 'Server: Lokal (Indonesia)',
-                'rule-8': 'Map: Land of Dawn',
-                'rule-9': 'Hero: Semua hero yang tersedia (termasuk hero baru)',
-                'rule-10': 'Skin: Diperbolehkan menggunakan semua skin',
-                'rule-11': 'Emblem: Diperbolehkan menggunakan emblem apapun',
-                'additional-rules': 'Peraturan Tambahan',
-                'rule-12': 'Keputusan panitia bersifat mutlak dan tidak dapat diganggu gugat.',
-                'rule-13': 'Panitia berhak mendiskualifikasi tim yang melanggar peraturan.',
-                'rule-14': 'Turnamen akan disiarkan langsung di WARKOP IYAH (Semifinal & Final)',
-                'prize-title': 'Hadiah Turnamen',
-                'prize-description': 'Total hadiah turnamen senilai <strong>Rp 3.500.000</strong> dengan rincian sebagai berikut:',
-                'first-place': 'Juara 1',
-                'first-prize': 'Rp 1.500.000 + Sertifikat',
-                'second-place': 'Juara 2',
-                'second-prize': 'Rp 1.000.000 + Sertifikat',
-                'third-place': 'Juara 3',
-                'third-prize': 'Rp 750.000 + Sertifikat',
-                'prize-note': '*Hadiah bisa berubah sewaktu-waktu dengan pemberitahuan sebelumnya',
-                'location-title': 'Lokasi WARKOP IYAH',
-                'location-description': 'Turnamen akan diselenggarakan di WARKOP IYAH, CIBATU. Berikut peta lokasinya:',
-                'directions': 'Dapatkan Petunjuk Arah',
-                'registration-form': 'Formulir Pendaftaran',
-                'form-instruction': 'Isi formulir berikut untuk mendaftarkan tim Anda dalam turnamen ini. Pastikan semua data yang dimasukkan valid.',
-                'team-name': 'Nama Tim',
-                'team-leader': 'Nama Leader Tim',
-                'team-contact': 'Nomor WhatsApp',
-                'team-members': 'Anggota Tim',
-                'payment-method': 'Metode Pembayaran',
-                'cash': 'CASH',
-                'dana': 'DANA',
-                'upload-text': 'Unggah bukti transfer DANA',
-                'dana-number': 'Nomor DANA: 08388548795',
-                'remove-file': 'Hapus File',
-                'submit-form': 'Daftarkan Tim',
-                'reset-form': 'Reset Form',
-                'generate-cert': 'Generate Sertifikat',
-                'footer-text': 'TURNAMEN MLBB SEASON 1',
-                'rights-reserved': 'SEMUA HAK DILINDUNGI.',
-                'affiliation': 'Turnamen ini tidak berafiliasi dengan Moonton.',
-                'certificate-title': 'SERTIFIKAT PENDAFTARAN',
-                'certificate-subtitle': 'TURNAMEN MLBB WARKOP IYAH SEASON 1',
-                'certificate-text': 'Diberikan kepada:',
-                'certificate-date': '14 Juni 2025',
-                'certificate-participant': 'Peserta',
-                'certificate-committee': 'Panitia WARKOP IYAH',
-                'download-cert': 'Unduh Sertifikat'
-            },
-            'en': {
-                'home': 'Home',
-                'about': 'About',
-                'rules': 'Rules',
-                'prize': 'Prize',
-                'register': 'Register',
-                'location': 'Location:',
-                'location-menu': 'Tempat',
-                'tournament-title': 'MLBB TOURNAMENT S1',
-                'welcome-message': 'Welcome to the official Mobile Legends: Bang Bang tournament WARKOP IYAH Season 1! This tournament is open to everyone with total prizes worth millions of rupiah. Prove that your team is the best!',
-                'days': 'Days',
-                'hours': 'Hours',
-                'minutes': 'Minutes',
-                'seconds': 'Seconds',
-                'register-now': 'Register Now',
-                'about-tournament': 'About Tournament',
-                'about-description': 'MLBB Tournament WARKOP IYAH Season 1 is a Mobile Legends: Bang Bang competition organized by WARKOP IYAH to entertain the community and find new talents in the Esports world.',
-                'tournament-details': 'Tournament Details:',
-                'date': 'Date:',
-                'date-value': 'June 14, 2025 - Finish',
-                'registration': 'Registration:',
-                'registration-value': 'Close June 13, 2025',
-                'location': 'Location:',
-                'location-value': 'WARKOP IYAH, CIBATU',
-                'format': 'Format:',
-                'format-value': '5v5 (Single Elimination)',
-                'fee': 'Registration Fee:',
-                'fee-value': 'Rp 100,000 per team',
-                'slots': 'Team Slots:',
-                'slots-value': 'Maximum 32 teams',
-                'tournament-rules': 'Tournament Rules',
-                'rules-intro': 'Here are the official rules that all participants must comply with:',
-                'general-rules': 'General Rules',
-                'rule-1': 'Each team consists of 5 main players and a maximum of 2 reserves.',
-                'rule-2': 'Participants must arrive 30 minutes before the match schedule.',
-                'rule-3': 'Being late more than 15 minutes will be considered a withdrawal.',
-                'rule-4': 'All players must use original accounts (not borrowed accounts).',
-                'rule-5': 'Using any cheats, hacks, or exploits is prohibited.',
-                'technical-rules': 'Technical Rules',
-                'rule-6': 'Mode: Custom Game - Draft Pick',
-                'rule-7': 'Server: Local (Indonesia)',
-                'rule-8': 'Map: Land of Dawn',
-                'rule-9': 'Hero: All available heroes (including new heroes)',
-                'rule-10': 'Skin: All skins are allowed',
-                'rule-11': 'Emblem: Any emblem is allowed',
-                'additional-rules': 'Additional Rules',
-                'rule-12': 'The committee\'s decision is final and cannot be contested.',
-                'rule-13': 'The committee has the right to disqualify teams that violate the rules.',
-                'rule-14': 'The tournament will be broadcast live at WARKOP IYAH (Semifinal & Final)',
-                'prize-title': 'Tournament Prize',
-                'prize-description': 'Total tournament prize worth <strong>Rp 3,500,000</strong> with details:<br><br>' +
-                      "1. 1st Place: Rp 1,500,000 + Certificate<br>" +
-                      "2. 2nd Place: Rp 1,000,000 + Certificate<br>" +
-                      "3. 3rd Place: Rp 750,000 + Certificate",
-                'prize-note': '*Prizes may change at any time with prior notice',
-                'location-title': 'WARKOP IYAH Location',
-                'location-description': 'The tournament will be held at WARKOP IYAH, CIBATU. Here is the location map:',
-                'directions': 'Get Directions',
-                'registration-form': 'Registration Form',
-                'form-instruction': 'Fill out the following form to register your team in this tournament. Make sure all data entered is valid.',
-                'team-name': 'Team Name',
-                'team-leader': 'Team Leader Name',
-                'team-contact': 'WhatsApp Number',
-                'team-members': 'Team Members',
-                'payment-method': 'Payment Method',
-                'cash': 'CASH',
-                'dana': 'DANA',
-                'upload-text': 'Upload DANA payment proof',
-                'dana-number': 'DANA Number: 08388548795',
-                'remove-file': 'Remove File',
-                'submit-form': 'Register Team',
-                'reset-form': 'Reset Form',
-                'generate-cert': 'Generate Certificate',
-                'footer-text': 'MLBB TOURNAMENT SEASON 1',
-                'rights-reserved': 'ALL RIGHTS RESERVED.',
-                'affiliation': 'This tournament is not affiliated with Moonton.',
-                'certificate-title': 'REGISTRATION CERTIFICATE',
-                'certificate-subtitle': 'MLBB WARKOP IYAH TOURNAMENT SEASON 1',
-                'certificate-text': 'Awarded to:',
-                'certificate-date': 'June 14, 2025',
-                'certificate-participant': 'Participant',
-                'certificate-committee': 'WARKOP IYAH Committee',
-                'download-cert': 'Download Certificate'
-            }
-        };
-        
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('language', lang);
-            
-            Object.keys(languages[lang]).forEach(key => {
-                const elements = document.querySelectorAll(`.lang-${key}`);
-                elements.forEach(element => {
-                    if (key.includes('-value') || key === 'prize-description') {
-                        element.innerHTML = languages[lang][key];
-                    } else {
-                        element.textContent = languages[lang][key];
-                    }
-                });
-            });
-            
-            document.getElementById('team-name').placeholder = lang === 'id' ? 'Masukkan nama tim' : 'Enter team name';
-            document.getElementById('team-leader').placeholder = lang === 'id' ? 'Nama lengkap leader' : 'Full name of leader';
-            document.getElementById('team-contact').placeholder = lang === 'id' ? 'Contoh: 081234567890' : 'Example: 081234567890';
-            document.getElementById('team-members').placeholder = lang === 'id' 
-                ? 'Tuliskan nama anggota tim (Contoh: 1. Budi 2. Dudung 3. Sungkem 4. Ronggur 5. Stang Mio).' 
-                : 'Write team members names (Example: 1. Budi 2. Dudung 3. Sungkem 4. Ronggur 5. Stang Mio).';
-
-            const greeting = lang === 'id' 
-                ? 'Halo! Saya AI Assistant untuk turnamen MLBB WARKOP IYAH. Silakan tanyakan apa saja tentang peraturan turnamen ini atau gunakan pintasan di atas.' 
-                : 'Hello! I am AI Assistant for MLBB WARKOP IYAH tournament. Please ask anything about the tournament rules or use the quick links above.';
-            
-            const aiMessages = document.getElementById('aiMessages');
-            if (aiMessages.children.length > 0) {
-                aiMessages.children[0].innerHTML = greeting;
-            }
-        }
-        
-        const savedLanguage = localStorage.getItem('language') || 'id';
-        changeLanguage(savedLanguage);
-        
-        languageToggle.addEventListener('click', () => {
-            const newLanguage = currentLanguage === 'id' ? 'en' : 'id';
-            changeLanguage(newLanguage);
-        });
-        
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
@@ -1579,88 +1462,50 @@
         });
         
         const aiResponses = {
-            "peraturan": {
-                "id": "Berikut beberapa peraturan penting:<br><br>" +
+            "peraturan": "Berikut beberapa peraturan penting:<br><br>" +
                      "1. Setiap tim terdiri dari 5 pemain utama dan maksimal 2 cadangan.<br>" +
                      "2. Peserta wajib hadir 30 menit sebelum jadwal pertandingan.<br>" +
                      "3. Keterlambatan lebih dari 15 menit akan dianggap mengundurkan diri.<br>" +
                      "4. Semua pemain harus menggunakan akun asli (bukan akun pinjaman).<br>" +
                      "5. Dilarang menggunakan cheat, hack, atau exploit apapun.",
-                "en": "Here are some important rules:<br><br>" +
-                      "1. Each team consists of 5 main players and a maximum of 2 reserves.<br>" +
-                      "2. Participants must arrive 30 minutes before the match schedule.<br>" +
-                      "3. Being late more than 15 minutes will be considered a withdrawal.<br>" +
-                      "4. All players must use original accounts (not borrowed accounts).<br>" +
-                      "5. Using any cheats, hacks, or exploits is prohibited."
-            },
-            "hadiah": {
-                "id": "Total hadiah turnamen senilai Rp 3.500.000 dengan rincian:<br><br>" +
+            "hadiah": "Total hadiah turnamen senilai Rp 3.500.000 dengan rincian:<br><br>" +
                       "1. Juara 1: Rp 1.500.000 + Sertifikat<br>" +
                       "2. Juara 2: Rp 1.000.000 + Sertifikat<br>" +
                       "3. Juara 3: Rp 750.000 + Sertifikat",
-                "en": "Total tournament prize worth Rp 3,500,000 with details:<br><br>" +
-                      "1. 1st Place: Rp 1,500,000 + Certificate<br>" +
-                      "2. 2nd Place: Rp 1,000,000 + Certificate<br>" +
-                      "3. 3rd Place: Rp 750,000 + Certificate"
-            },
-            "pendaftaran": {
-                "id": "Untuk mendaftar, silakan isi formulir pendaftaran di bagian 'Daftar'.<br><br>" +
+            "pendaftaran": "Untuk mendaftar, silakan isi formulir pendaftaran di bagian 'Daftar'.<br><br>" +
                       "Biaya pendaftaran: Rp 100.000 per tim<br>" +
                       "Batas pendaftaran: 13 Juni 2025",
-                "en": "To register, please fill out the registration form in the 'Register' section.<br><br>" +
-                      "Registration fee: Rp 100,000 per team<br>" +
-                      "Registration deadline: June 13, 2025"
-            },
-            "jadwal": {
-                "id": "Jadwal turnamen:<br><br>" +
-                     "1. Pendaftaran: Sampai 13 Juni 2025<br>" +
-                     "2. Turnamen: 14 Juni 2025 - Selesai<br>" +
-                     "3. Tempat: WARKOP IYAH, CIBATU",
-                "en": "Tournament schedule:<br><br>" +
-                     "1. Registration: Until June 13, 2025<br>" +
-                     "2. Tournament: June 14, 2025 - Finish<br>" +
-                     "3. Location: WARKOP IYAH, CIBATU"
-            },
-            "kontak": {
-                "id": "Untuk pertanyaan lebih lanjut, silakan hubungi:<br><br>" +
+            "jadwal": "Jadwal turnamen:<br><br>" +
+                     "1. Technical Meeting: Jumat, 13 Juni 2025<br>" +
+                     "2. Babak Penyisihan: Sabtu, 14 Juni 2025 (18.00-23.00 WIB)<br>" +
+                     "3. Semifinal & Final: Minggu, 15 Juni 2025 (19.30-23.00 WIB)<br>" +
+                     "4. Tempat: WARKOP IYAH, CIBATU",
+            "kontak": "Untuk pertanyaan lebih lanjut, silakan hubungi:<br><br>" +
                      "1. WhatsApp: 081370504313<br>" +
                      "2. Instagram: @warkopiyah<br>" +
-                     "3. Lokasi: WARKOP IYAH, CIBATU",
-                "en": "For further questions, please contact:<br><br>" +
-                     "1. WhatsApp: 081370504313<br>" +
-                     "2. Instagram: @warkopiyah<br>" +
-                     "3. Location: WARKOP IYAH, CIBATU"
-            }
+                     "3. Lokasi: WARKOP IYAH, CIBATU"
         };
         
         function getAIResponse(question) {
             question = question.toLowerCase();
-            const lang = currentLanguage;
             
             if (question.includes('peratur') || question.includes('aturan') || question.includes('rule')) {
-                return aiResponses.peraturan[lang];
+                return aiResponses.peraturan;
             } else if (question.includes('hadiah') || question.includes('prize') || question.includes('reward')) {
-                return aiResponses.hadiah[lang];
+                return aiResponses.hadiah;
             } else if (question.includes('daftar') || question.includes('regist') || question.includes('pendaftaran')) {
-                return aiResponses.pendaftaran[lang];
+                return aiResponses.pendaftaran;
             } else if (question.includes('jadwal') || question.includes('schedule') || question.includes('waktu')) {
-                return aiResponses.jadwal[lang];
+                return aiResponses.jadwal;
             } else if (question.includes('kontak') || question.includes('hubung') || question.includes('contact')) {
-                return aiResponses.kontak[lang];
+                return aiResponses.kontak;
             } else {
-                return lang === 'id' 
-                    ? "Maaf, saya tidak mengerti pertanyaan Anda. Silakan tanyakan tentang:<br><br>" +
+                return "Maaf, saya tidak mengerti pertanyaan Anda. Silakan tanyakan tentang:<br><br>" +
                       "1. Peraturan turnamen<br>" +
                       "2. Hadiah turnamen<br>" +
                       "3. Pendaftaran turnamen<br>" +
                       "4. Jadwal turnamen<br>" +
-                      "5. Kontak panitia"
-                    : "Sorry, I don't understand your question. Please ask about:<br><br>" +
-                      "1. Tournament rules<br>" +
-                      "2. Tournament prizes<br>" +
-                      "3. Tournament registration<br>" +
-                      "4. Tournament schedule<br>" +
-                      "5. Committee contact";
+                      "5. Kontak panitia";
             }
         }
         
@@ -1792,10 +1637,8 @@
             if (!teamName || !teamLeader) {
                 Swal.fire({
                     icon: 'error',
-                    title: currentLanguage === 'id' ? 'Formulir Tidak Lengkap' : 'Incomplete Form',
-                    text: currentLanguage === 'id' 
-                        ? 'Harap isi nama tim dan leader terlebih dahulu!' 
-                        : 'Please fill in team name and leader first!',
+                    title: 'Formulir Tidak Lengkap',
+                    text: 'Harap isi nama tim dan leader terlebih dahulu!',
                     confirmButtonColor: '#FF5722'
                 });
                 return;
@@ -1810,11 +1653,7 @@
                 day: 'numeric' 
             };
             
-            if (currentLanguage === 'id') {
-                certDate.textContent = new Date().toLocaleDateString('id-ID', options);
-            } else {
-                certDate.textContent = new Date().toLocaleDateString('en-US', options);
-            }
+            certDate.textContent = new Date().toLocaleDateString('id-ID', options);
             
             certificateContainer.style.display = 'flex';
         });
@@ -1880,10 +1719,8 @@
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: currentLanguage === 'id' ? 'Format File Tidak Didukung' : 'Unsupported File Format',
-                        text: currentLanguage === 'id' 
-                            ? 'Silakan unggah file gambar (JPG, PNG, dll.)' 
-                            : 'Please upload an image file (JPG, PNG, etc.)',
+                        title: 'Format File Tidak Didukung',
+                        text: 'Silakan unggah file gambar (JPG, PNG, dll.)',
                         confirmButtonColor: '#FF5722'
                     });
                     fileInput.value = '';
@@ -1910,10 +1747,8 @@
             if (!whatsappRegex.test(teamContact)) {
                 Swal.fire({
                     icon: 'error',
-                    title: currentLanguage === 'id' ? 'Nomor WhatsApp Tidak Valid' : 'Invalid WhatsApp Number',
-                    text: currentLanguage === 'id' 
-                        ? 'Nomor WhatsApp tidak valid! Harap masukkan nomor yang benar.' 
-                        : 'Invalid WhatsApp number! Please enter a correct number.',
+                    title: 'Nomor WhatsApp Tidak Valid',
+                    text: 'Nomor WhatsApp tidak valid! Harap masukkan nomor yang benar.',
                     confirmButtonColor: '#FF5722'
                 });
                 return;
@@ -1922,10 +1757,8 @@
             if (paymentMethod === 'DANA' && !paymentFile) {
                 Swal.fire({
                     icon: 'error',
-                    title: currentLanguage === 'id' ? 'Bukti Pembayaran Dibutuhkan' : 'Payment Proof Required',
-                    text: currentLanguage === 'id' 
-                        ? 'Silakan unggah bukti transfer DANA terlebih dahulu!' 
-                        : 'Please upload DANA payment proof first!',
+                    title: 'Bukti Pembayaran Dibutuhkan',
+                    text: 'Silakan unggah bukti transfer DANA terlebih dahulu!',
                     confirmButtonColor: '#FF5722'
                 });
                 return;
@@ -1936,44 +1769,28 @@
                 .filter(line => line !== '')
                 .join('%0A');
             
-            let whatsappMessage = currentLanguage === 'id'
-                ? `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
+            let whatsappMessage = `*FORM PENDAFTARAN TURNAMEN MLBB WARKOP IYAH*%0A%0A` +
                   `*Nama Tim:* ${encodeURIComponent(teamName)}%0A` +
                   `*Leader Tim:* ${encodeURIComponent(teamLeader)}%0A` +
                   `*Nomor WhatsApp:* ${encodeURIComponent(teamContact)}%0A` +
                   `*Metode Pembayaran:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Anggota Tim:*%0A${formattedMembers}%0A%0A`
-                : `*MLBB TOURNAMENT REGISTRATION FORM WARKOP IYAH*%0A%0A` +
-                  `*Team Name:* ${encodeURIComponent(teamName)}%0A` +
-                  `*Team Leader:* ${encodeURIComponent(teamLeader)}%0A` +
-                  `*WhatsApp Number:* ${encodeURIComponent(teamContact)}%0A` +
-                  `*Payment Method:* ${encodeURIComponent(paymentMethod)}%0A%0A` +
-                  `*Team Members:*%0A${formattedMembers}%0A%0A`;
+                  `*Anggota Tim:*%0A${formattedMembers}%0A%0A`;
             
             if (paymentMethod === 'CASH') {
-                whatsappMessage += currentLanguage === 'id'
-                    ? `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A`
-                    : `*Payment Confirmation:*%0APlease make payment of Rp100,000 directly at WARKOP IYAH by June 13, 2025%0A%0A`;
+                whatsappMessage += `*Konfirmasi Pembayaran:*%0ASilahkan lakukan pembayaran Rp100.000 di WARKOP IYAH secara langsung batas waktu hingga 13 Juni 2025%0A%0A`;
             } else if (paymentMethod === 'DANA') {
-                whatsappMessage += currentLanguage === 'id'
-                    ? `*Konfirmasi Pembayaran:*%0ATransfer DANA ke nomor 08388548795 sebesar Rp100.000%0A%0A`
-                    : `*Payment Confirmation:*%0ADANA transfer to number 08388548795 for Rp100,000%0A%0A`;
+                whatsappMessage += `*Konfirmasi Pembayaran:*%0ATransfer DANA ke nomor 08388548795 sebesar Rp100.000%0A%0A`;
             }
             
-            whatsappMessage += currentLanguage === 'id'
-                ? `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
-                  `Terima Kasih telah mendaftar!`
-                : `_This registration was sent via Warkop IYAH website_%0A%0A` +
-                  `Thank you for registering!`;
+            whatsappMessage += `_Pendaftaran ini dikirim melalui website Warkop IYAH_%0A%0A` +
+                  `Terima Kasih telah mendaftar!`;
             
             Swal.fire({
-                title: currentLanguage === 'id' ? 'Formulir Berhasil!' : 'Form Submitted!',
-                text: currentLanguage === 'id' 
-                    ? 'Anda akan diarahkan ke WhatsApp panitia untuk konfirmasi pendaftaran.' 
-                    : 'You will be redirected to the committee WhatsApp for registration confirmation.',
+                title: 'Formulir Berhasil!',
+                text: 'Anda akan diarahkan ke WhatsApp panitia untuk konfirmasi pendaftaran.',
                 icon: 'success',
                 confirmButtonColor: '#FF5722',
-                confirmButtonText: currentLanguage === 'id' ? 'OK' : 'OK',
+                confirmButtonText: 'OK',
                 willClose: () => {
                     if (paymentMethod === 'DANA' && paymentFile) {
                         const formData = new FormData();
@@ -2000,13 +1817,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 Swal.fire({
-                    title: currentLanguage === 'id' ? 'Pendaftaran Dibuka!' : 'Registration Open!',
-                    text: currentLanguage === 'id' 
-                        ? 'Pendaftaran turnamen telah dibuka! Daftarkan tim Anda sekarang.' 
-                        : 'Tournament registration is open! Register your team now.',
+                    title: 'Pendaftaran Dibuka!',
+                    text: 'Pendaftaran turnamen telah dibuka! Daftarkan tim Anda sekarang.',
                     icon: 'info',
                     confirmButtonColor: '#FF5722',
-                    confirmButtonText: currentLanguage === 'id' ? 'Daftar Sekarang' : 'Register Now',
+                    confirmButtonText: 'Daftar Sekarang',
                     timer: 5000,
                     timerProgressBar: true
                 });
